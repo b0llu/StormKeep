@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../Context/Auth.context";
+import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 import "./Header.css";
 
 export const Header = () => {
@@ -25,9 +26,13 @@ export const Header = () => {
             <div className="badge">
               <i className="fa-solid fas fa-user"></i>
             </div>
+            <Link to="/" element={<DashboardPage />}>
+              {encodedToken && (
                 <div onClick={() => signout()} className="badge">
                   <i className="fas fa-sign-out"></i>
                 </div>
+              )}
+            </Link>
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>
         </div>

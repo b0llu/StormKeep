@@ -8,9 +8,9 @@
     );
   grid-template-areas:
     "nav nav nav nav nav nav"
-    "sidebar contentarea contentarea contentarea contentarea contentarea"
-    "sidebar contentarea contentarea contentarea contentarea contentarea"
-    "sidebar contentarea contentarea contentarea contentarea contentarea"
+    "contentarea contentarea contentarea contentarea contentarea contentarea"
+    "contentarea contentarea contentarea contentarea contentarea contentarea"
+    "contentarea contentarea contentarea contentarea contentarea contentarea"
     "footerarea footerarea footerarea footerarea footerarea footerarea";
 }
 

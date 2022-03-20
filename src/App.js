@@ -18,7 +18,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route element={<RequireAuth />}>
-          <Route path="/" element={<DashboardPage />} />
+            <Route path="/" element={<DashboardPage />} />
           </Route>
           <Route element={<RestrictAuth />}>
             <Route
