@@ -1,4 +1,4 @@
-import { Footer, Header, LandingContainer, Sidebar } from "./Components";
+import { Footer, Header, LandingContainer, Sidebar, Toast } from "./Components";
 import { Routes, Route } from "react-router-dom";
 import {
   AuthContainer,
@@ -7,18 +7,19 @@ import {
 } from "./Pages/AuthPage/ProfileComponents";
 import RestrictAuth from "./Components/PrivateRoute/RestrictAuth";
 import RequireAuth from "./Components/PrivateRoute/RequireAuth";
+import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 
 function App() {
   return (
     <>
       <LandingContainer>
+        <Toast />
         <Header />
+        <Sidebar />
         <Routes>
           <Route element={<RequireAuth />}>
-            <Route path="/sidebar" element={<Sidebar />} />
-            <Route path="/" element={<div>hi</div>} />
+          <Route path="/" element={<DashboardPage />} />
           </Route>
-
           <Route element={<RestrictAuth />}>
             <Route
               path="/login"
@@ -32,7 +33,7 @@ function App() {
               path="/signup"
               element={
                 <AuthContainer>
-                  <LoginBox />
+                  <SignupBox />
                 </AuthContainer>
               }
             />

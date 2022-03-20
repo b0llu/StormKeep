@@ -4,7 +4,8 @@ import { useAuthContext } from "../../Context/Auth.context";
 const RestrictAuth = () => {
   const { userState } = useAuthContext();
   const location = useLocation();
-  return userState.id ? (
+
+  return userState._id ? (
     <Navigate to="/" state={{ from: location }} replace />
   ) : (
     <Outlet />

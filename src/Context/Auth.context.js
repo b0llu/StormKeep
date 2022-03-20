@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const { dispatch } = useReducerContext();
-  const encodedToken = localStorage.getItem("StormPointToken");
+  const encodedToken = localStorage.getItem("StormKeepToken");
   const [userState, setUserState] = useState([]);
 
   const login = async (userDetails) => {
@@ -16,8 +16,8 @@ const AuthProvider = ({ children }) => {
         password: userDetails.password,
       });
       // saving the encodedToken in the localStorage
-      localStorage.setItem("StormPointToken", data.encodedToken);
-      localStorage.setItem("StormPointUser", data.foundUser.firstName);
+      localStorage.setItem("StormKeepToken", data.encodedToken);
+      localStorage.setItem("StormKeepUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
       dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
@@ -32,8 +32,8 @@ const AuthProvider = ({ children }) => {
         password: userDetails.passwordOne,
       });
       // saving the encodedToken in the localStorage
-      localStorage.setItem("StormPointToken", data.encodedToken);
-      localStorage.setItem("StormPointUser", data.createdUser.firstName);
+      localStorage.setItem("StormKeepToken", data.encodedToken);
+      localStorage.setItem("StormKeepUser", data.createdUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Sign Up Successful" });
     } catch (error) {
       console.log(error);
@@ -52,9 +52,8 @@ const AuthProvider = ({ children }) => {
         email: "admin@gmail.com",
         password: "admin",
       });
-
-      localStorage.setItem("StormPointToken", data.encodedToken);
-      localStorage.setItem("StormPointUser", data.foundUser.firstName);
+      localStorage.setItem("StormKeepToken", data.encodedToken);
+      localStorage.setItem("StormKeepUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
       console.log(error);
@@ -68,6 +67,7 @@ const AuthProvider = ({ children }) => {
           encodedToken: encodedToken,
         });
         setUserState(data);
+        console.log(userState);
       } catch (error) {}
     })();
   }, [encodedToken]);

@@ -29,6 +29,17 @@ export const reducer = (state, action) => {
         },
       };
 
+    // toast state handler
+    case "TOAST_STATE_CLEAN":
+      return {
+        ...state,
+        forToast: {
+          text: "",
+          trigger: false,
+          selector: "",
+        },
+      };
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
