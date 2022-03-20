@@ -1,0 +1,30 @@
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.sidebar li {
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+}
+
+.sidebar-icon {
+    margin-right: 1rem;
+}
+
+.selected {
+    background-color: var(--primary-color);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: var(--white);
+    transition: 0.2s ease-in-out;
+}
