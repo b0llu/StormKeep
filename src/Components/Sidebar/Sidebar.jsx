@@ -18,7 +18,7 @@ export const Sidebar = () => {
             onClick={() => setClick(false)}
             className={`${click ? "" : "selected"}`}
           >
-            <span class="material-icons sidebar-icon">archive</span>
+            <span className="material-icons sidebar-icon">archive</span>
             <span className="sidebar-headers">Archived</span>
           </li>
         </ul>
