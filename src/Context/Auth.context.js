@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("StormKeepUser", data.createdUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Sign Up Successful" });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
     }
   };
 
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("StormKeepUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
     }
   };
 
@@ -67,7 +67,6 @@ const AuthProvider = ({ children }) => {
           encodedToken: encodedToken,
         });
         setUserState(data);
-        console.log(userState);
       } catch (error) {}
     })();
   }, [encodedToken]);

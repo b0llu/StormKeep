@@ -59,9 +59,13 @@ footer {
 @media screen and (max-width: 850px) {
   .landing-container {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, max-content) repeat(2, 1fr) repeat(
+      1,
+      max-content
+    );
     grid-template-areas:
       "nav nav nav"
-      "contentarea contentarea contentarea"
+      "sidebar sidebar sidebar"
       "contentarea contentarea contentarea"
       "contentarea contentarea contentarea"
       "footerarea footerarea footerarea";

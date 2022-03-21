@@ -3,7 +3,6 @@ import "./LandingContainer.css";
 
 export const LandingContainer = ({ children }) => {
   const location = useLocation();
-  console.log(location)
 
   return (
     <section

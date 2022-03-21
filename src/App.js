@@ -7,7 +7,7 @@ import {
 } from "./Pages/AuthPage/ProfileComponents";
 import RestrictAuth from "./Components/PrivateRoute/RestrictAuth";
 import RequireAuth from "./Components/PrivateRoute/RequireAuth";
-import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
+import { NotesPage } from "./Pages/NotesPage/NotesPage";
 
 function App() {
   const location = useLocation();
@@ -24,7 +24,7 @@ function App() {
 
         <Routes>
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<DashboardPage />} />
+            <Route path="/" element={<NotesPage />} />
           </Route>
 
           <Route element={<RestrictAuth />}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthContext } from "../../../../Context/Auth.context";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
@@ -10,6 +10,7 @@ export const LoginBox = () => {
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
+  const [trigger, setTrigger] = useState(true)
 
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
   const emailValidation =
@@ -23,7 +24,7 @@ export const LoginBox = () => {
       });
     }, 3000);
     return () => clearTimeout(timeout);
-  }, [error]);
+  }, [trigger]);
 
   const loginHandler = () => {
     if (userDetails.password.match(validation)) {
@@ -33,16 +34,19 @@ export const LoginBox = () => {
         text: "Dont leave any field empty",
         state: true,
       });
+      setTrigger(!trigger)
     } else if (!userDetails.email.match(emailValidation)) {
       setError({
         text: "Please enter correct email",
         state: true,
       });
+      setTrigger(!trigger);
     }else {
       setError({
         text: "Password should be AlphaNumeric and more than 5 letters",
         state: true,
       });
+      setTrigger(!trigger);
     }
   };
 

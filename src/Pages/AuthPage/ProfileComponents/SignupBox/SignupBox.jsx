@@ -15,6 +15,7 @@ export const SignupBox = () => {
   });
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
+  const [trigger, setTrigger] = useState(true);
 
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
   const emailValidation =
@@ -28,7 +29,7 @@ export const SignupBox = () => {
       });
     }, 3000);
     return () => clearTimeout(timeout);
-  }, [error]);
+  }, [trigger]);
 
   const signupHandler = () => {
     if (
@@ -41,6 +42,7 @@ export const SignupBox = () => {
         text: "Dont leave any field empty",
         state: true,
       });
+      setTrigger(!trigger)
     } else if (
       !userDetails.passwordOne.match(validation) ||
       !userDetails.passwordTwo.match(validation) ||
@@ -50,16 +52,19 @@ export const SignupBox = () => {
         text: "Password must be same and Alphanumeric and minimum 5 letters long",
         state: true,
       });
+      setTrigger(!trigger);
     } else if (!userDetails.terms) {
       setError({
         text: "Accept Terms and Conditions",
         state: true,
       });
+      setTrigger(!trigger);
     } else if (!userDetails.email.match(emailValidation)) {
       setError({
         text: "Please enter correct email",
         state: true,
       });
+      setTrigger(!trigger);
     } else {
       signup(userDetails);
     }

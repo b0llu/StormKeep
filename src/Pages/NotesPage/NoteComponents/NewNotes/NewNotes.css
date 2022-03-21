@@ -1,0 +1,44 @@
+.new-note-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.new-note-container .input-container {
+    width: 30rem;
+    margin: 5rem 1rem;
+    height: max-content;
+}
+
+.input-text-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input-text-section h2 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.input-text-section h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.edit-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-section h2 {
+    margin: 1rem 0 0 0;
+    font-size: 2rem;
+    font-weight: 500;
+}

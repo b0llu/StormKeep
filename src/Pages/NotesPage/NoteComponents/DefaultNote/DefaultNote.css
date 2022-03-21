@@ -1,0 +1,100 @@
+textarea {
+  font-family: inherit;
+}
+
+textarea::-webkit-input-placeholder {
+   padding-left: 0;
+}
+
+.input-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 40%;
+}
+
+.input-text-section-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.input-text-section-container .text {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+  outline: none;
+  word-wrap: break-word;
+  resize: none;
+}
+
+.input-text-section-container .title-text-style {
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.input-text-section {
+  margin: 1rem 0;
+}
+
+.pin-icon {
+  margin: 1rem 0 0 0;
+  cursor: pointer;
+  color: var(--content-color);
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.pin-icon:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
+.edit-section-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.edit-section-container .tag {
+  border: none;
+  border-radius: 0.3rem;
+  display: inline-block;
+  padding: 3px;
+  background-color: inherit;
+  border: 1px solid var(--content-color);
+  font-size: 2rem;
+}
+
+.tag:focus {
+  outline: none;
+}
+
+.edit-section-container button {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+}
+.edit-section-container button:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 1050px) {
+  .input-container {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .input-container {
+    width: 100%;
+  }
+}
