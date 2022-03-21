@@ -7,7 +7,6 @@ export const Header = () => {
   const user = localStorage.getItem("StormKeepUser");
   const encodedToken = localStorage.getItem("StormKeepToken");
   const { signout } = useAuthContext();
-
   return (
     <nav>
       <div className="navbar">
