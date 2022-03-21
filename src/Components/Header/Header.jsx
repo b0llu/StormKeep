@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../../Context/Auth.context";
+import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 import "./Header.css";
 
 export const Header = () => {
+  const user = localStorage.getItem("StormKeepUser");
+  const encodedToken = localStorage.getItem("StormKeepToken");
+  const { signout } = useAuthContext();
+
   return (
     <nav>
       <div className="navbar">
@@ -15,13 +22,17 @@ export const Header = () => {
         />
         <div className="margin-left-auto">
           <div className="icon-container">
-            {/* <p>{user}</p> */}
+            <p>{user}</p>
             <div className="badge">
               <i className="fa-solid fas fa-user"></i>
             </div>
-            <div onClick={() => signout()} className="badge">
-              <i className="fas fa-sign-out"></i>
-            </div>
+            <Link to="/" element={<DashboardPage />}>
+              {encodedToken && (
+                <div onClick={() => signout()} className="badge">
+                  <i className="fas fa-sign-out"></i>
+                </div>
+              )}
+            </Link>
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>
         </div>
