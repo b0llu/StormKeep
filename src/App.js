@@ -8,6 +8,7 @@ import {
 import RestrictAuth from "./Components/PrivateRoute/RestrictAuth";
 import RequireAuth from "./Components/PrivateRoute/RequireAuth";
 import { NotesPage } from "./Pages/NotesPage/NotesPage";
+import MockAPI from "./Mockman";
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function App() {
               }
             />
           </Route>
+          <Route path="/mockman" element={<MockAPI />} />
         </Routes>
         <Footer />
       </LandingContainer>

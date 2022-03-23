@@ -48,9 +48,8 @@ textarea::-webkit-input-placeholder {
   font-weight: 500;
 }
 
-.pin-icon:hover {
+.active {
   color: var(--primary-color);
-  transition: 0.2s ease-in-out;
 }
 
 .edit-section-container {
