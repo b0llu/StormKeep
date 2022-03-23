@@ -8,9 +8,8 @@ export const EditModel = () => {
     title: "",
     description: "",
     typeOfNote: "Home",
-    pinned: false,
+    pinned: isEditMode.note.pinned,
   });
-
   return (
     <div className="model">
       <div className="input-container card-shadow">
@@ -37,12 +36,12 @@ export const EditModel = () => {
             />
           </div>
           <div>
-            {noteDetails.pinned ? (
+            {isEditMode.note.pinned ? (
               <span
                 onClick={() =>
                   setNoteDetails({
                     ...noteDetails,
-                    pinned: !noteDetails.pinned,
+                    pinned: !isEditMode.note.pinned,
                   })
                 }
                 className="material-icons pin-icon active"
@@ -54,7 +53,7 @@ export const EditModel = () => {
                 onClick={() =>
                   setNoteDetails({
                     ...noteDetails,
-                    pinned: !noteDetails.pinned,
+                    pinned: !isEditMode.note.pinned,
                   })
                 }
                 className="material-icons-outlined pin-icon"

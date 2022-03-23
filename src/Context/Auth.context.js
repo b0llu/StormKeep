@@ -1,11 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
+import { useNoteContext } from "./Notes.context";
 import { useReducerContext } from "./Reducer.context";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const { dispatch } = useReducerContext();
+  const { setNotes } = useNoteContext();
   const encodedToken = localStorage.getItem("StormKeepToken");
   const [userState, setUserState] = useState([]);
 
@@ -44,6 +46,7 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: "ERROR_TOAST", payload: "Logged Out" });
     localStorage.clear();
     setUserState([]);
+    setNotes([])
   };
 
   const testLogger = async () => {

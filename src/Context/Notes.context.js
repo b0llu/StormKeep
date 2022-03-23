@@ -49,6 +49,7 @@ const NoteProvider = ({ children }) => {
             title: notes.title,
             description: notes.description,
             typeOfNote: notes.typeOfNote,
+            pinned: notes.pinned
           },
         },
         { headers: { authorization: encodedToken } }
@@ -85,6 +86,7 @@ const NoteProvider = ({ children }) => {
       value={{
         addNote,
         notes,
+        setNotes,
         removeNote,
         editNote,
         pinHandler,
