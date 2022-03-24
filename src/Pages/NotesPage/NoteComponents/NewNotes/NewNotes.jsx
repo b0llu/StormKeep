@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useArchivedNotesContext } from "../../../../Context/ArchivedNotes.context";
 import { useNoteContext } from "../../../../Context/Notes.context";
 import { EditModel } from "../EditModel/EditModel";
 import "./NewNotes.css";
@@ -6,6 +7,7 @@ import "./NewNotes.css";
 export const NewNotes = () => {
   const { notes, removeNote, editNote, pinHandler, isEditMode, setIsEditMode } =
     useNoteContext();
+  const { addToArchive } = useArchivedNotesContext();
 
   return (
     <>
@@ -42,12 +44,19 @@ export const NewNotes = () => {
                     </div>
                     <div className="note-icon-container">
                       <span
-                        onClick={() => setIsEditMode({ state: true, note: note })}
+                        onClick={() =>
+                          setIsEditMode({ state: true, note: note })
+                        }
                         className="material-icons pin-icon"
                       >
                         edit
                       </span>
-                      <span className="material-icons pin-icon">archive</span>
+                      <span
+                        onClick={() => addToArchive(note)}
+                        className="material-icons pin-icon"
+                      >
+                        archive
+                      </span>
                       <span
                         onClick={() => removeNote(note._id)}
                         className="material-icons pin-icon"
@@ -92,12 +101,19 @@ export const NewNotes = () => {
                     </div>
                     <div className="note-icon-container">
                       <span
-                        onClick={() => setIsEditMode({ state: true, note: note })}
+                        onClick={() =>
+                          setIsEditMode({ state: true, note: note })
+                        }
                         className="material-icons pin-icon"
                       >
                         edit
                       </span>
-                      <span className="material-icons pin-icon">archive</span>
+                      <span
+                        onClick={() => addToArchive(note)}
+                        className="material-icons pin-icon"
+                      >
+                        archive
+                      </span>
                       <span
                         onClick={() => removeNote(note._id)}
                         className="material-icons pin-icon"
@@ -111,7 +127,7 @@ export const NewNotes = () => {
             })}
         </div>
       </div>
-            {isEditMode.state ? <EditModel /> : null}
+      {isEditMode.state ? <EditModel /> : null}
     </>
   );
 };

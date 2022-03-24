@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { useReducerContext } from "./Reducer.context";
 
 const NoteContext = createContext();
@@ -21,6 +21,7 @@ const NoteProvider = ({ children }) => {
         setNotes(response.data.notes);
         dispatch({ type: "SUCCESS_TOAST", payload: "Note Added" });
       }
+      console.log(response)
     } catch (err) {
       dispatch({ type: "ERROR_TOAST", payload: "Something went Wrong" });
     }
@@ -92,6 +93,7 @@ const NoteProvider = ({ children }) => {
         pinHandler,
         isEditMode,
         setIsEditMode,
+        encodedToken,
       }}
     >
       {children}
