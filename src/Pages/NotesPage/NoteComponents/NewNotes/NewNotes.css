@@ -1,0 +1,109 @@
+.new-note-container {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.new-note-container h1 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.new-note-container .input-container {
+  width: 30rem;
+  margin: 3rem 1rem;
+  height: max-content;
+}
+
+.newnote-input-container {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 30rem;
+}
+
+.input-text-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input-text-section h2 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.input-text-section h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.edit-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-section h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  border: 1px solid var(--content-color);
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.note-icon-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-icon-container button{
+  padding: 0;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.note-icon-container span {
+  margin-left: 1rem;
+}
+
+.note-icon-container span:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
+.other,
+.pinned {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.pin-text, .other-text {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 850px) {
+  .newnote-input-container {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .other,
+.pinned {
+  width: 100%;
+}
+}

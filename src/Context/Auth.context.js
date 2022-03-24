@@ -1,11 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
+import { useNoteContext } from "./Notes.context";
 import { useReducerContext } from "./Reducer.context";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const { dispatch } = useReducerContext();
+  const { setNotes } = useNoteContext();
   const encodedToken = localStorage.getItem("StormKeepToken");
   const [userState, setUserState] = useState([]);
 
@@ -36,7 +38,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("StormKeepUser", data.createdUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Sign Up Successful" });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
     }
   };
 
@@ -44,6 +46,7 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: "ERROR_TOAST", payload: "Logged Out" });
     localStorage.clear();
     setUserState([]);
+    setNotes([])
   };
 
   const testLogger = async () => {
@@ -56,7 +59,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("StormKeepUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
     }
   };
 
@@ -67,7 +70,6 @@ const AuthProvider = ({ children }) => {
           encodedToken: encodedToken,
         });
         setUserState(data);
-        console.log(userState);
       } catch (error) {}
     })();
   }, [encodedToken]);
