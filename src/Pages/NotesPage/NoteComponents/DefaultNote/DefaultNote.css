@@ -12,6 +12,7 @@ textarea::-webkit-input-placeholder {
   border-radius: 0.5rem;
   position: relative;
   width: 40%;
+  height: max-content;
 }
 
 .input-text-section-container {
@@ -23,6 +24,7 @@ textarea::-webkit-input-placeholder {
 .input-text-section-container .text {
   background-color: transparent;
   width: 100%;
+  height: max-content;
   border: none;
   margin-bottom: 1rem;
   padding-right: 2rem;

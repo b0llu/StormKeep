@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: "ERROR_TOAST", payload: "Logged Out" });
     localStorage.clear();
     setUserState([]);
-    setNotes([])
+    setNotes([]);
   };
 
   const testLogger = async () => {
@@ -76,7 +76,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ login, signup, signout, testLogger, userState }}
+      value={{ login, signup, signout, testLogger, userState, encodedToken }}
     >
       {children}
     </AuthContext.Provider>
