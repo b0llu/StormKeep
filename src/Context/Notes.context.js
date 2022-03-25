@@ -21,7 +21,6 @@ const NoteProvider = ({ children }) => {
         setNotes(response.data.notes);
         dispatch({ type: "SUCCESS_TOAST", payload: "Note Added" });
       }
-      console.log(response)
     } catch (err) {
       dispatch({ type: "ERROR_TOAST", payload: "Something went Wrong" });
     }
@@ -46,12 +45,7 @@ const NoteProvider = ({ children }) => {
       const response = await axios.post(
         `/api/notes/${id}`,
         {
-          note: {
-            title: notes.title,
-            description: notes.description,
-            typeOfNote: notes.typeOfNote,
-            pinned: notes.pinned
-          },
+          note: notes,
         },
         { headers: { authorization: encodedToken } }
       );

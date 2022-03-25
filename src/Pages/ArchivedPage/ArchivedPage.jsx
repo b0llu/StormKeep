@@ -1,9 +1,11 @@
 import { useArchivedNotesContext } from "../../Context/ArchivedNotes.context";
+import { useNoteContext } from "../../Context/Notes.context";
+import { EditModel } from "../NotesPage/NoteComponents/EditModel/EditModel";
 import "./ArchivedPage.css";
 
 export const ArchivedPage = () => {
   const { archivedNotes, archiveToNotes, removeFromArchive } =
-    useArchivedNotesContext();
+  useArchivedNotesContext();
   return (
     <div className="archived-container">
       <div style={{ textAlign: "center", width: "100%" }}>
@@ -13,22 +15,14 @@ export const ArchivedPage = () => {
           <h1 className="pin-text">Archives</h1>
         )}
       </div>
-      <div>
+      <div style={{ width: "100%", display: 'flex' }}>
         {archivedNotes.map((note) => {
           return (
-            <div key={note._id} className="newnote-input-container card-shadow">
+            <div style={{backgroundColor: note.noteColor}} key={note._id} className="newnote-input-container card-shadow">
               <div className="input-text-section-container">
                 <div className="input-text-section">
                   <h2>{note.title}</h2>
                   <h3>{note.description}</h3>
-                </div>
-                <div>
-                  <span
-                    // onClick={() => pinHandler(note)}
-                    className="material-icons pin-icon"
-                  >
-                    push_pin
-                  </span>
                 </div>
               </div>
               <div className="edit-section-container">
@@ -36,12 +30,6 @@ export const ArchivedPage = () => {
                   <h2>{note.typeOfNote}</h2>
                 </div>
                 <div className="note-icon-container">
-                  <span
-                    // onClick={() => setIsEditMode({ state: true, note: note })}
-                    className="material-icons pin-icon"
-                  >
-                    edit
-                  </span>
                   <span
                     onClick={() => archiveToNotes(note)}
                     className="material-icons pin-icon"

@@ -1,0 +1,41 @@
+.palette {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 2rem;
+  text-align: center;
+  margin-left: 0.5rem;
+}
+.palette i {
+  display: inline-block;
+  line-height: 3.2rem;
+  border-radius: 50%;
+  height: 3.2rem;
+  width: 3.2rem;
+  transition: 0.2s ease-in-out;
+}
+.palette:hover i {
+  color: var(--primary-color);
+}
+
+.colorPaletteContainer {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  padding: 5px;
+  z-index: 10;
+  flex-wrap: wrap;
+  width: 19rem;
+  border-radius: 5px;
+}
+
+.colorPalette {
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 5px;
+}
+
+.colorPalette:hover {
+  border: 2px solid var(--primary-color);
+}

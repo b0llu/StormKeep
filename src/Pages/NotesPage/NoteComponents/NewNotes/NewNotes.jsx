@@ -5,7 +5,7 @@ import { EditModel } from "../EditModel/EditModel";
 import "./NewNotes.css";
 
 export const NewNotes = () => {
-  const { notes, removeNote, editNote, pinHandler, isEditMode, setIsEditMode } =
+  const { notes, removeNote, pinHandler, isEditMode, setIsEditMode } =
     useNoteContext();
   const { addToArchive } = useArchivedNotesContext();
 
@@ -23,6 +23,7 @@ export const NewNotes = () => {
                 <div
                   key={note._id}
                   className="newnote-input-container card-shadow"
+                  style={{ backgroundColor: note.noteColor }}
                 >
                   <div className="input-text-section-container">
                     <div className="input-text-section">
@@ -80,6 +81,7 @@ export const NewNotes = () => {
                 <div
                   key={note._id}
                   className="newnote-input-container card-shadow"
+                  style={{ backgroundColor: note.noteColor }}
                 >
                   <div className="input-text-section-container">
                     <div className="input-text-section">
