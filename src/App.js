@@ -10,6 +10,7 @@ import RequireAuth from "./Components/PrivateRoute/RequireAuth";
 import { NotesPage } from "./Pages/NotesPage/NotesPage";
 import MockAPI from "./Mockman";
 import { ArchivedPage } from "./Pages/ArchivedPage/ArchivedPage";
+import { LabelPage } from "./Pages/LabelPage/LabelPage";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/" element={<NotesPage />} />
             <Route path="/archives" element={<ArchivedPage />} />
+            <Route path="/labels" element={<LabelPage />} />
           </Route>
 
           <Route element={<RestrictAuth />}>

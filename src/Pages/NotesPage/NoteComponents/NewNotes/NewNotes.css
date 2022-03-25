@@ -39,10 +39,10 @@
 .input-text-section h2 {
   margin: 0 0 1rem 0;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
-.input-text-section h3 {
+.input-text-section .h3 {
   font-size: 1.5rem;
   font-weight: 500;
   word-break: break-all;

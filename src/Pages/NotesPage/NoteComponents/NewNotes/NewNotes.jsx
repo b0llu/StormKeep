@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import { useState } from "react";
 import { useArchivedNotesContext } from "../../../../Context/ArchivedNotes.context";
 import { useNoteContext } from "../../../../Context/Notes.context";
@@ -28,7 +29,7 @@ export const NewNotes = () => {
                   <div className="input-text-section-container">
                     <div className="input-text-section">
                       <h2>{note.title}</h2>
-                      <h3>{note.description}</h3>
+                      <ReactMarkdown className="h3">{note.description}</ReactMarkdown>
                     </div>
                     <div>
                       <span
@@ -86,7 +87,7 @@ export const NewNotes = () => {
                   <div className="input-text-section-container">
                     <div className="input-text-section">
                       <h2>{note.title}</h2>
-                      <h3>{note.description}</h3>
+                      <ReactMarkdown className="h3">{note.description}</ReactMarkdown>
                     </div>
                     <div>
                       <span

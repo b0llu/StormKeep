@@ -1,10 +1,23 @@
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { useNoteContext } from "../../Context/Notes.context";
+import { useReducerContext } from "../../Context/Reducer.context";
 import { ArchivedPage } from "../../Pages/ArchivedPage/ArchivedPage";
+import { LabelPage } from "../../Pages/LabelPage/LabelPage";
 import { NotesPage } from "../../Pages/NotesPage/NotesPage";
+import { Loader } from "../Loader/Loader";
+import { labelTypes } from "./label-type.data";
 import "./Sidebar.css";
 
 export const Sidebar = () => {
+  const { notes } = useNoteContext();
+  const { dispatch, labels, loading } = useReducerContext();
   const location = useLocation();
+
+  useEffect(() => {
+    dispatch({ type: "LOADING" });
+  }, [labels]);
+
   return (
     <aside>
       <div className="sidebar">
@@ -14,6 +27,45 @@ export const Sidebar = () => {
               <span className="material-icons sidebar-icon">text_snippet</span>
               <span className="sidebar-headers">Notes</span>
             </li>
+          </Link>
+          <Link to="labels" element={<LabelPage />}>
+            <li className={`${location.pathname === "/labels" && "selected"}`}>
+              <span className="material-icons sidebar-icon">label</span>
+              <span className="sidebar-headers">Labels</span>
+            </li>
+            {location.pathname === "/labels" && (
+              <ul
+                style={{ display: `${notes.length === 0 ? "none" : "flex"}` }}
+                className="label-list"
+              >
+                {labelTypes.map((label) => {
+                  return (
+                    <div key={label.type}>
+                      {loading ? (
+                        <Loader />
+                      ) : (
+                        <label>
+                          <input
+                            className="label-input"
+                            type="checkbox"
+                            value={label.type}
+                            checked={labels[label.type] ?? false}
+                            onChange={(e) => {
+                              dispatch({ type: "LOADING" });
+                              dispatch({
+                                type: "LABEL_FILTER",
+                                payload: e.target.value,
+                              });
+                            }}
+                          />
+                          {label.type}
+                        </label>
+                      )}
+                    </div>
+                  );
+                })}
+              </ul>
+            )}
           </Link>
           <Link to="/archives" element={<ArchivedPage />}>
             <li

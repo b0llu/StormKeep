@@ -29,6 +29,16 @@ export const reducer = (state, action) => {
         },
       };
 
+    // label filter
+    case "LABEL_FILTER":
+      return {
+        ...state,
+        labels: {
+          ...state.labels,
+          [action.payload]: !state.labels[action.payload],
+        },
+      };
+
     // toast state handler
     case "TOAST_STATE_CLEAN":
       return {
