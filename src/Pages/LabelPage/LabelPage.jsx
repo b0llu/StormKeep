@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useNoteContext } from "../../Context/Notes.context";
-import { useReducerContext } from "../../Context/Reducer.context";
 import { useFunctionCombiner } from "../../Hook/useFunctionCombiner";
+import { EditModel } from "../NotesPage/NoteComponents/EditModel/EditModel";
 
 export const LabelPage = () => {
-  const {notes} = useNoteContext()
+  const { removeNote, isEditMode, setIsEditMode } =
+    useNoteContext();
   const { sortedLables } = useFunctionCombiner();
+
   return (
     <div className="archived-container">
       <div style={{ textAlign: "center", width: "100%" }}>
@@ -31,9 +34,17 @@ export const LabelPage = () => {
               <div className="edit-section-container">
                 <div className="edit-section">
                   <h2>{note.typeOfNote}</h2>
+                  <h2>{note.priority}</h2>
                 </div>
                 <div className="note-icon-container">
                   <span
+                    onClick={() => setIsEditMode({ state: true, note: note })}
+                    className="material-icons pin-icon"
+                  >
+                    edit
+                  </span>
+                  <span
+                    onClick={() => removeNote(note._id)}
                     className="material-icons pin-icon"
                   >
                     delete
@@ -44,6 +55,7 @@ export const LabelPage = () => {
           );
         })}
       </div>
+      {isEditMode.state ? <EditModel /> : null}
     </div>
   );
 };

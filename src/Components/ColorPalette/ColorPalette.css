@@ -39,3 +39,9 @@
 .colorPalette:hover {
   border: 2px solid var(--primary-color);
 }
+
+@media screen and (max-width: 850px) {
+  .colorPaletteContainer {
+      right: 5px;
+  }
+}

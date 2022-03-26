@@ -30,13 +30,19 @@ export const reducer = (state, action) => {
       };
 
     // label filter
-    case "LABEL_FILTER":
+    case "FILTER":
       return {
         ...state,
-        labels: {
-          ...state.labels,
-          [action.payload]: !state.labels[action.payload],
-        },
+        [action.filterType]: state[action.filterType].includes(action.filter)
+          ? state[action.filterType].filter((type) => type !== action.filter)
+          : [...state[action.filterType], action.filter],
+      };
+
+    // priority sorting
+    case "HIGH_PRIORITY":
+      return {
+        ...state,
+        sort: action.payload,
       };
 
     // toast state handler

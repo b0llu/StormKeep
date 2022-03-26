@@ -3,7 +3,7 @@ textarea {
 }
 
 textarea::-webkit-input-placeholder {
-   padding-left: 0;
+  padding-left: 0;
 }
 
 .input-container {
@@ -11,7 +11,7 @@ textarea::-webkit-input-placeholder {
   padding: 1rem;
   border-radius: 0.5rem;
   position: relative;
-  width: 40%;
+  width: 60%;
   height: max-content;
 }
 
@@ -54,6 +54,10 @@ textarea::-webkit-input-placeholder {
   color: var(--primary-color);
 }
 
+.edit-section select {
+  margin-left: 1rem;
+}
+
 .edit-section-container {
   display: flex;
   flex-wrap: wrap;
@@ -88,9 +92,13 @@ textarea::-webkit-input-placeholder {
   transition: 0.2s ease-in-out;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1150px) {
   .input-container {
     width: 85%;
+  }
+
+  .edit-section select {
+    margin-left: 0;
   }
 }
 

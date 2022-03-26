@@ -1,17 +1,21 @@
 const labelFilter = (notes, labels) => {
-  const filteredLables = [];
-
-  if (Object.values(labels).every((value) => !value)) {
-    return notes;
-  } else {
-    for (const key in labels) {
-      if (labels[key]) {
-        let newLables = notes.filter((item) => key === item.typeOfNote);
-        filteredLables.push(...newLables);
-      }
-    }
-  }
+  let filteredLables =
+    labels.length !== 0
+      ? notes.filter((l) => labels.includes(l.typeOfNote))
+      : notes;
   return filteredLables;
 };
 
-export { labelFilter };
+const prioritySorting = (notes, sort) => {
+  if (sort === null) {
+    return notes;
+  } else if (sort === "High") {
+    return notes.filter((note) => note.priority === sort);
+  } else if (sort === "Medium") {
+    return notes.filter((note) => note.priority === sort);
+  } else if (sort === "Low") {
+    return notes.filter((note) => note.priority === sort);
+  }
+};
+
+export { labelFilter, prioritySorting };

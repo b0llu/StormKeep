@@ -4,20 +4,22 @@ import { useArchivedNotesContext } from "../../../../Context/ArchivedNotes.conte
 import { useNoteContext } from "../../../../Context/Notes.context";
 import { EditModel } from "../EditModel/EditModel";
 import "./NewNotes.css";
+import { useFunctionCombiner } from "../../../../Hook/useFunctionCombiner";
 
 export const NewNotes = () => {
   const { notes, removeNote, pinHandler, isEditMode, setIsEditMode } =
     useNoteContext();
   const { addToArchive } = useArchivedNotesContext();
+  const { sortedPriorites } = useFunctionCombiner();
 
   return (
     <>
       <div className="new-note-container">
-        {notes.filter((n) => n.pinned).length === 0 ? null : (
+        {sortedPriorites.filter((n) => n.pinned).length === 0 ? null : (
           <h1 className="pin-text">Pinned</h1>
         )}
         <div className="pinned">
-          {notes
+          {sortedPriorites
             .filter((n) => n.pinned)
             .map((note) => {
               return (
@@ -29,7 +31,9 @@ export const NewNotes = () => {
                   <div className="input-text-section-container">
                     <div className="input-text-section">
                       <h2>{note.title}</h2>
-                      <ReactMarkdown className="h3">{note.description}</ReactMarkdown>
+                      <ReactMarkdown className="h3">
+                        {note.description}
+                      </ReactMarkdown>
                     </div>
                     <div>
                       <span
@@ -43,6 +47,7 @@ export const NewNotes = () => {
                   <div className="edit-section-container">
                     <div className="edit-section">
                       <h2>{note.typeOfNote}</h2>
+                      <h2>{note.priority}</h2>
                     </div>
                     <div className="note-icon-container">
                       <span
@@ -71,11 +76,11 @@ export const NewNotes = () => {
               );
             })}
         </div>
-        {notes.filter((n) => !n.pinned).length === 0 ? null : (
+        {sortedPriorites.filter((n) => !n.pinned).length === 0 ? null : (
           <h1 className="other-text">Other</h1>
         )}
         <div className="other">
-          {notes
+          {sortedPriorites
             .filter((n) => !n.pinned)
             .map((note) => {
               return (
@@ -87,7 +92,9 @@ export const NewNotes = () => {
                   <div className="input-text-section-container">
                     <div className="input-text-section">
                       <h2>{note.title}</h2>
-                      <ReactMarkdown className="h3">{note.description}</ReactMarkdown>
+                      <ReactMarkdown className="h3">
+                        {note.description}
+                      </ReactMarkdown>
                     </div>
                     <div>
                       <span
@@ -101,6 +108,7 @@ export const NewNotes = () => {
                   <div className="edit-section-container">
                     <div className="edit-section">
                       <h2>{note.typeOfNote}</h2>
+                      <h2>{note.priority}</h2>
                     </div>
                     <div className="note-icon-container">
                       <span

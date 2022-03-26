@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ColorPalette } from "../../../../Components";
 import { useNoteContext } from "../../../../Context/Notes.context";
 import "./DefaultNote.css";
@@ -9,17 +8,15 @@ export const DefaultNote = () => {
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     description: "",
-    typeOfNote: "Home",
+    typeOfNote: "Tag",
     pinned: false,
     noteColor: null,
+    priority: "Priority",
   });
 
   function colorChangeHandler(color) {
     setNoteDetails({
-      title: noteDetails.title,
-      description: noteDetails.description,
-      typeOfNote: noteDetails.typeOfNote,
-      pinned: noteDetails.pinned,
+      ...noteDetails,
       noteColor: color,
     });
   }
@@ -80,17 +77,35 @@ export const DefaultNote = () => {
       <div className="edit-section-container">
         <div className="edit-section">
           <select
+            value={noteDetails.typeOfNote}
             onChange={(e) =>
               setNoteDetails({ ...noteDetails, typeOfNote: e.target.value })
             }
             className="tag"
           >
+            <option value="Tag" hidden>
+              Tag
+            </option>
             <option value="Home">Home</option>
             <option value="Work">Work</option>
             <option value="Personal">Personal</option>
             <option value="Exercise">Exercise</option>
             <option value="Chores">Chores</option>
             <option value="Health">Health</option>
+          </select>
+          <select
+            value={noteDetails.priority}
+            onChange={(e) => {
+              setNoteDetails({ ...noteDetails, priority: e.target.value });
+            }}
+            className="tag"
+          >
+            <option value="Priority" hidden>
+              Priority
+            </option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
           </select>
           <ColorPalette
             notecolor={noteDetails.noteColor}
@@ -99,13 +114,24 @@ export const DefaultNote = () => {
         </div>
         <button
           onClick={() => {
-            addNote(noteDetails),
+            addNote({
+              ...noteDetails,
+              typeOfNote:
+                noteDetails.typeOfNote === "Tag"
+                  ? "Home"
+                  : noteDetails.typeOfNote,
+              priority:
+                noteDetails.priority === "Priority"
+                  ? "Low"
+                  : noteDetails.priority,
+            }),
               setNoteDetails({
-                ...noteDetails,
                 title: "",
                 description: "",
+                typeOfNote: "Tag",
+                priority: "Priority",
                 pinned: false,
-                noteColor: null
+                noteColor: null,
               });
           }}
         >
