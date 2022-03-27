@@ -116,10 +116,8 @@ export const Sidebar = () => {
                 </span>
               ))}
           </Link>
-          {location.pathname === "/labels" && (
-            <ul
-              className={`label-list ${labelsState && "for-mobile"}`}
-            >
+          {location.pathname === "/labels" && notes.length !== 0 && (
+            <ul className={`label-list ${labelsState && "for-mobile"}`}>
               {labelTypes.map((label) => {
                 return (
                   <div key={label.type}>

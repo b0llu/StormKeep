@@ -8,7 +8,7 @@ export const DefaultNote = () => {
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     description: "",
-    typeOfNote: "Tag",
+    typeOfNote: "Label",
     pinned: false,
     noteColor: null,
     priority: "Priority",
@@ -83,8 +83,8 @@ export const DefaultNote = () => {
             }
             className="tag"
           >
-            <option value="Tag" hidden>
-              Tag
+            <option value="Label" hidden>
+              Label
             </option>
             <option value="Home">Home</option>
             <option value="Work">Work</option>
