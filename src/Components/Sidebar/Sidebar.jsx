@@ -12,6 +12,8 @@ import "./Sidebar.css";
 export const Sidebar = () => {
   const { notes } = useNoteContext();
   const { dispatch, labels, loading, sort } = useReducerContext();
+  const [notesState, setNotesState] = useState(false);
+  const [labelsState, setLabelsState] = useState(false);
   const location = useLocation();
 
   return (
@@ -23,12 +25,26 @@ export const Sidebar = () => {
               <span className="material-icons sidebar-icon">text_snippet</span>
               <span className="sidebar-headers">Notes</span>
             </li>
+            {location.pathname === "/" &&
+              notes.length !== 0 &&
+              (notesState ? (
+                <span
+                  onClick={() => setNotesState(!notesState)}
+                  className="material-icons mobile-view"
+                >
+                  expand_less
+                </span>
+              ) : (
+                <span
+                  onClick={() => setNotesState(!notesState)}
+                  className="material-icons mobile-view"
+                >
+                  expand_more
+                </span>
+              ))}
           </Link>
-          {location.pathname === "/" && (
-            <ul
-              style={{ display: `${notes.length === 0 ? "none" : "flex"}` }}
-              className="label-list"
-            >
+          {location.pathname === "/" && notes.length !== 0 && (
+            <ul className={`label-list ${notesState && "for-mobile"}`}>
               <span className="sort-header">Priority Sorting :</span>
               <label>
                 <input
@@ -82,11 +98,27 @@ export const Sidebar = () => {
               <span className="material-icons sidebar-icon">label</span>
               <span className="sidebar-headers">Labels</span>
             </li>
+            {location.pathname === "/labels" &&
+              notes.length !== 0 &&
+              (labelsState ? (
+                <span
+                  onClick={() => setLabelsState(!labelsState)}
+                  className="material-icons mobile-view"
+                >
+                  expand_less
+                </span>
+              ) : (
+                <span
+                  onClick={() => setLabelsState(!labelsState)}
+                  className="material-icons mobile-view"
+                >
+                  expand_more
+                </span>
+              ))}
           </Link>
           {location.pathname === "/labels" && (
             <ul
-              style={{ display: `${notes.length === 0 ? "none" : "flex"}` }}
-              className="label-list"
+              className={`label-list ${labelsState && "for-mobile"}`}
             >
               {labelTypes.map((label) => {
                 return (

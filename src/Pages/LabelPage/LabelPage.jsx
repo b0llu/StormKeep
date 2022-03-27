@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useNoteContext } from "../../Context/Notes.context";
 import { useFunctionCombiner } from "../../Hook/useFunctionCombiner";
 import { EditModel } from "../NotesPage/NoteComponents/EditModel/EditModel";
@@ -28,7 +29,9 @@ export const LabelPage = () => {
               <div className="input-text-section-container">
                 <div className="input-text-section">
                   <h2>{note.title}</h2>
-                  <h3>{note.description}</h3>
+                  <div style={{fontSize: '2rem'}}>
+                  <ReactMarkdown>{note.description}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
               <div className="edit-section-container">

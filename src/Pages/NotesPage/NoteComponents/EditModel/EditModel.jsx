@@ -5,20 +5,19 @@ import { ColorPalette } from "../../../../Components";
 
 export const EditModel = () => {
   const { editNote, setIsEditMode, isEditMode } = useNoteContext();
+  console.log(isEditMode);
   const [noteDetails, setNoteDetails] = useState({
-    title: "",
-    description: "",
-    typeOfNote: "Home",
+    title: isEditMode.note.title,
+    description: isEditMode.note.description,
+    typeOfNote: isEditMode.note.typeOfNote,
     pinned: isEditMode.note.pinned,
-    noteColor: null,
+    noteColor: isEditMode.note.noteColor,
+    priority: isEditMode.note.priority,
   });
 
   function colorChangeHandler(color) {
     setNoteDetails({
-      title: noteDetails.title,
-      description: noteDetails.description,
-      typeOfNote: noteDetails.typeOfNote,
-      pinned: noteDetails.pinned,
+      ...noteDetails,
       noteColor: color,
     });
   }
@@ -37,6 +36,7 @@ export const EditModel = () => {
               autoFocus
               rows="1"
               className="text title-text-style"
+              value={noteDetails.title}
               maxLength="15"
               onChange={(e) =>
                 setNoteDetails({ ...noteDetails, title: e.target.value })
@@ -47,6 +47,7 @@ export const EditModel = () => {
               className="text"
               type="text"
               placeholder="Take a note..."
+              value={noteDetails.description}
               onChange={(e) =>
                 setNoteDetails({ ...noteDetails, description: e.target.value })
               }
@@ -95,6 +96,19 @@ export const EditModel = () => {
               <option value="Chores">Chores</option>
               <option value="Health">Health</option>
             </select>
+            <select
+              onChange={(e) => {
+                setNoteDetails({ ...noteDetails, priority: e.target.value });
+              }}
+              className="tag"
+            >
+              <option value="Priority" hidden>
+                Priority
+              </option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
             <ColorPalette
               notecolor={noteDetails.noteColor}
               colorChangeHandler={colorChangeHandler}
@@ -106,9 +120,10 @@ export const EditModel = () => {
                 setNoteDetails({
                   title: "",
                   description: "",
-                  typeOfNote: "Home",
-                  pinned: false,
-                  noteColor: null,
+                  typeOfNote: isEditMode.note.typeOfNote,
+                  pinned: isEditMode.note.pinned,
+                  noteColor: isEditMode.note.noteColor,
+                  priority: isEditMode.note.priority,
                 }),
                 setIsEditMode(false);
             }}

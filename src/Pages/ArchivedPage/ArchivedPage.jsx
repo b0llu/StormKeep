@@ -1,11 +1,11 @@
+import ReactMarkdown from "react-markdown";
 import { useArchivedNotesContext } from "../../Context/ArchivedNotes.context";
-import { useNoteContext } from "../../Context/Notes.context";
-import { EditModel } from "../NotesPage/NoteComponents/EditModel/EditModel";
 import "./ArchivedPage.css";
 
 export const ArchivedPage = () => {
   const { archivedNotes, archiveToNotes, removeFromArchive } =
   useArchivedNotesContext();
+  
   return (
     <div className="archived-container">
       <div style={{ textAlign: "center", width: "100%" }}>
@@ -22,12 +22,15 @@ export const ArchivedPage = () => {
               <div className="input-text-section-container">
                 <div className="input-text-section">
                   <h2>{note.title}</h2>
-                  <h3>{note.description}</h3>
+                  <div style={{fontSize: '2rem'}}>
+                  <ReactMarkdown>{note.description}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
               <div className="edit-section-container">
                 <div className="edit-section">
                   <h2>{note.typeOfNote}</h2>
+                  <h2>{note.priority}</h2>
                 </div>
                 <div className="note-icon-container">
                   <span

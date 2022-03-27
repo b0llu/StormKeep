@@ -57,7 +57,6 @@ const ArchivedNotesProvider = ({ children }) => {
           headers: { authorization: encodedToken },
         }
       );
-      console.log(response);
       if (response.status === 200) {
         setArchivedNotes(response.data.archives);
         dispatch({ type: "ERROR_TOAST", payload: "Deleted" });

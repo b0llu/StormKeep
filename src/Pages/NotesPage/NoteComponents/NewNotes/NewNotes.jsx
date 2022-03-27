@@ -7,7 +7,7 @@ import "./NewNotes.css";
 import { useFunctionCombiner } from "../../../../Hook/useFunctionCombiner";
 
 export const NewNotes = () => {
-  const { notes, removeNote, pinHandler, isEditMode, setIsEditMode } =
+  const { removeNote, pinHandler, isEditMode, setIsEditMode } =
     useNoteContext();
   const { addToArchive } = useArchivedNotesContext();
   const { sortedPriorites } = useFunctionCombiner();
