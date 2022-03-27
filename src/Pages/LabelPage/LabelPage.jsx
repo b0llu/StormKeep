@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useNoteContext } from "../../Context/Notes.context";
 import { useFunctionCombiner } from "../../Hook/useFunctionCombiner";
