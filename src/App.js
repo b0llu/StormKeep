@@ -11,6 +11,7 @@ import { NotesPage } from "./Pages/NotesPage/NotesPage";
 import MockAPI from "./Mockman";
 import { ArchivedPage } from "./Pages/ArchivedPage/ArchivedPage";
 import { LabelPage } from "./Pages/LabelPage/LabelPage";
+import { LandingPage } from "./Pages/LandingPage/LandingPage";
 
 function App() {
   const location = useLocation();
@@ -21,13 +22,14 @@ function App() {
         <Toast />
         <Header />
         {location.pathname === "/login" ||
-        location.pathname === "/signup" ? null : (
-          <Sidebar />
-        )}
+          location.pathname === "/signup" ||
+          (location.pathname === "/" ? null : <Sidebar />)}
 
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<NotesPage />} />
+            <Route path="/notes" element={<NotesPage />} />
             <Route path="/archives" element={<ArchivedPage />} />
             <Route path="/labels" element={<LabelPage />} />
           </Route>

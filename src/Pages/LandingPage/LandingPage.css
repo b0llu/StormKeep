@@ -1,0 +1,139 @@
+.landing {
+  grid-area: contentarea;
+  display: flex;
+}
+
+.landing-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.landing-header {
+  font-size: 3rem;
+  font-weight: bolder;
+  margin-top: 2rem;
+  color: var(--primary-color);
+}
+
+.landing-info {
+  font-size: 2rem;
+  width: 50rem;
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--content-color);
+}
+
+.landing-btn {
+  border: none;
+  color: var(--white);
+  background-color: #3da4df;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.landing-btn:hover {
+  background-color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
+.landing-link {
+  margin-top: 2rem;
+  color: var(--content-color);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.landing-right {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-right .rsp-img {
+  width: 50rem;
+  height: auto;
+}
+
+.landing-img-container {
+  width: 50rem;
+  height: 50rem;
+}
+
+@media screen and (min-width: 2000px) {
+  .landing-header {
+    font-size: 5rem;
+    margin-top: 3rem;
+  }
+
+  .landing-info {
+    font-size: 3.5rem;
+    width: 100rem;
+    margin-top: 3rem;
+  }
+
+  .landing-btn {
+    font-size: 3rem;
+    margin-top: 3rem;
+  }
+
+  .landing-link {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .landing-right .rsp-img {
+    width: 70rem;
+    height: auto;
+  }
+
+  .landing-img-container {
+    width: 70rem;
+    height: 70rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .landing-header {
+    font-size: 2rem;
+    width: auto;
+    margin-top: 1rem;
+  }
+
+  .landing-info {
+      margin-top: 1rem;
+    width: auto;
+    font-size: 1.5rem;
+  }
+
+  .landing-link {
+      margin-top: 1rem;
+      width: auto;
+  }
+
+  .landing-right {
+    display: none;
+  }
+
+  .landing {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 400px) {
+    .landing-info {
+        width: 20rem;
+    }
+
+    .landing-container-auth {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
