@@ -13,6 +13,7 @@ textarea::-webkit-input-placeholder {
   position: relative;
   width: 60%;
   height: max-content;
+  background-color: var(--card-container-bg);
 }
 
 .input-text-section-container {
@@ -31,6 +32,7 @@ textarea::-webkit-input-placeholder {
   outline: none;
   word-wrap: break-word;
   resize: none;
+  color: var(--content-color);
 }
 
 .input-text-section-container .title-text-style {
@@ -72,6 +74,7 @@ textarea::-webkit-input-placeholder {
   background-color: inherit;
   border: 1px solid var(--content-color);
   font-size: 2rem;
+  color: var(--content-color);
 }
 
 .tag:focus {
@@ -86,6 +89,7 @@ textarea::-webkit-input-placeholder {
   cursor: pointer;
   border-radius: 1rem;
   padding: 0.3rem 1rem;
+  color: var(--content-color);
 }
 .edit-section-container button:hover {
   color: var(--primary-color);

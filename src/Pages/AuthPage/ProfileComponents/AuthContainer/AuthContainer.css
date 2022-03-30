@@ -69,7 +69,6 @@
 .btn-login:hover {
     background-color: var(--login-color-dark);
     transition: 0.2s ease-in-out;
-    color: var(--white);
 }
 
 .login-container .btn-login {

@@ -10,21 +10,25 @@ export const ArchivedPage = () => {
     <div className="archived-container">
       <div style={{ textAlign: "center", width: "100%" }}>
         {archivedNotes.length === 0 ? (
-          <h1>No Archives</h1>
+          <h1 style={{ color: "var(--content-color)" }}>No Archives</h1>
         ) : (
           <h1 className="pin-text">Archives</h1>
         )}
       </div>
-      <div style={{ width: "100%", display: 'flex' }}>
+      <div style={{ width: "100%", display: "flex" }}>
         {archivedNotes.map((note) => {
           return (
-            <div style={{backgroundColor: note.noteColor}} key={note._id} className="newnote-input-container card-shadow">
+            <div
+              style={{ backgroundColor: note.noteColor }}
+              key={note._id}
+              className="newnote-input-container card-shadow"
+            >
               <div className="input-text-section-container">
                 <div className="input-text-section">
                   <h2>{note.title}</h2>
-                  <div style={{fontSize: '2rem'}}>
-                  <ReactMarkdown>{note.description}</ReactMarkdown>
-                  </div>
+                  <ReactMarkdown className="h3">
+                    {note.description}
+                  </ReactMarkdown>
                 </div>
               </div>
               <div className="edit-section-container">

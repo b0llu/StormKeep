@@ -7,6 +7,7 @@ import { AuthProvider } from "./Context/Auth.context";
 import { ReducerProvider } from "./Context/Reducer.context";
 import { NoteProvider } from "./Context/Notes.context";
 import { ArchivedNotesProvider } from "./Context/ArchivedNotes.context";
+import { ThemeProvider } from "./Context/Theme.context";
 
 // Call make Server
 makeServer();
@@ -17,9 +18,11 @@ ReactDOM.render(
       <NoteProvider>
         <ArchivedNotesProvider>
           <AuthProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <ThemeProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </ThemeProvider>
           </AuthProvider>
         </ArchivedNotesProvider>
       </NoteProvider>

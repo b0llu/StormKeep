@@ -10,7 +10,7 @@ export const DefaultNote = () => {
     description: "",
     typeOfNote: "Label",
     pinned: false,
-    noteColor: null,
+    noteColor: 'var(--card-container-bg)',
     priority: "Priority",
   });
 

@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Context/Auth.context";
+import { useThemeContext } from "../../Context/Theme.context";
 import { LoginBox } from "../../Pages/AuthPage/ProfileComponents";
 import "./Header.css";
 
 export const Header = () => {
+  const { theme, toggleLightDarkTheme } = useThemeContext();
   const user = localStorage.getItem("StormKeepUser");
   const encodedToken = localStorage.getItem("StormKeepToken");
   const { signout } = useAuthContext();
@@ -33,7 +35,12 @@ export const Header = () => {
                 </div>
               )}
             </Link>
-            <i id="toggle-theme" className="fas fa-moon icon icon-color"></i>
+            <i
+              onClick={toggleLightDarkTheme}
+              className={`${
+                theme === "light" ? "fas fa-moon" : "fas fa-sun"
+              } icon icon-color`}
+            ></i>
           </div>
         </div>
         {location.pathname !== "/" &&
