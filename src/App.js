@@ -11,50 +11,50 @@ import { NotesPage } from "./Pages/NotesPage/NotesPage";
 import MockAPI from "./Mockman";
 import { ArchivedPage } from "./Pages/ArchivedPage/ArchivedPage";
 import { LabelPage } from "./Pages/LabelPage/LabelPage";
+import { LandingPage } from "./Pages/LandingPage/LandingPage";
 
 function App() {
   const location = useLocation();
 
   return (
-    <>
-      <LandingContainer>
-        <Toast />
-        <Header />
-        {location.pathname === "/login" ||
-        location.pathname === "/signup" ? null : (
-          <Sidebar />
-        )}
+    <LandingContainer>
+      <Toast />
+      <Header />
+      {location.pathname === "/login" ||
+        location.pathname === "/signup" ||
+        (location.pathname === "/" ? null : <Sidebar />)}
 
-        <Routes>
-          <Route element={<RequireAuth />}>
-            <Route path="/" element={<NotesPage />} />
-            <Route path="/archives" element={<ArchivedPage />} />
-            <Route path="/labels" element={<LabelPage />} />
-          </Route>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
 
-          <Route element={<RestrictAuth />}>
-            <Route
-              path="/login"
-              element={
-                <AuthContainer>
-                  <LoginBox />
-                </AuthContainer>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <AuthContainer>
-                  <SignupBox />
-                </AuthContainer>
-              }
-            />
-          </Route>
-          <Route path="/mockman" element={<MockAPI />} />
-        </Routes>
-        <Footer />
-      </LandingContainer>
-    </>
+        <Route element={<RequireAuth />}>
+          <Route path="/notes" element={<NotesPage />} />
+          <Route path="/archives" element={<ArchivedPage />} />
+          <Route path="/labels" element={<LabelPage />} />
+        </Route>
+
+        <Route element={<RestrictAuth />}>
+          <Route
+            path="/login"
+            element={
+              <AuthContainer>
+                <LoginBox />
+              </AuthContainer>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <AuthContainer>
+                <SignupBox />
+              </AuthContainer>
+            }
+          />
+        </Route>
+        <Route path="/mockman" element={<MockAPI />} />
+      </Routes>
+      <Footer />
+    </LandingContainer>
   );
 }
 

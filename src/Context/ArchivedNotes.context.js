@@ -68,7 +68,7 @@ const ArchivedNotesProvider = ({ children }) => {
 
   return (
     <ArchivedNotesContext.Provider
-      value={{ addToArchive, archivedNotes, archiveToNotes, removeFromArchive }}
+      value={{ addToArchive, archivedNotes, setArchivedNotes, archiveToNotes, removeFromArchive }}
     >
       {children}
     </ArchivedNotesContext.Provider>

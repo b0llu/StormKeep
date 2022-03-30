@@ -6,7 +6,7 @@ const RestrictAuth = () => {
   const location = useLocation();
 
   return userState._id ? (
-    <Navigate to="/" state={{ from: location }} replace />
+    <Navigate to="/notes" state={{ from: location }} replace />
   ) : (
     <Outlet />
   );

@@ -115,7 +115,7 @@ export const verifyUser = function (schema, request) {
     if (decodedToken) {
       const user = this.db.users.findBy({ email: decodedToken.email });
       if (user) {
-        return user;
+        return new Response(200, {}, { user });
       }
     }
     return new Response(

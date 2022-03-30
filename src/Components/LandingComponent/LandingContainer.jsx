@@ -7,7 +7,9 @@ export const LandingContainer = ({ children }) => {
   return (
     <section
       className={
-        location.pathname === "/login" || location.pathname === "/signup"
+        location.pathname === "/login" ||
+        location.pathname === "/signup" ||
+        location.pathname === "/"
           ? "landing-container-auth"
           : "landing-container"
       }

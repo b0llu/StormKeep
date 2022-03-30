@@ -20,12 +20,12 @@ export const Sidebar = () => {
     <aside>
       <div className="sidebar">
         <ul>
-          <Link to="/" element={<NotesPage />}>
-            <li className={`${location.pathname === "/" && "selected"}`}>
+          <Link to="/notes" element={<NotesPage />}>
+            <li className={`${location.pathname === "/notes" && "selected"}`}>
               <span className="material-icons sidebar-icon">text_snippet</span>
               <span className="sidebar-headers">Notes</span>
             </li>
-            {location.pathname === "/" &&
+            {location.pathname === "/notes" &&
               notes.length !== 0 &&
               (notesState ? (
                 <span
@@ -43,7 +43,7 @@ export const Sidebar = () => {
                 </span>
               ))}
           </Link>
-          {location.pathname === "/" && notes.length !== 0 && (
+          {location.pathname === "/notes" && notes.length !== 0 && (
             <ul className={`label-list ${notesState && "for-mobile"}`}>
               <span className="sort-header">Priority Sorting :</span>
               <label>

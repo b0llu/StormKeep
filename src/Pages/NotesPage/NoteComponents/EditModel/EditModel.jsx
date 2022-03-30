@@ -5,7 +5,6 @@ import { ColorPalette } from "../../../../Components";
 
 export const EditModel = () => {
   const { editNote, setIsEditMode, isEditMode } = useNoteContext();
-  console.log(isEditMode);
   const [noteDetails, setNoteDetails] = useState({
     title: isEditMode.note.title,
     description: isEditMode.note.description,
@@ -84,6 +83,7 @@ export const EditModel = () => {
         <div className="edit-section-container">
           <div className="edit-section">
             <select
+              value={noteDetails.typeOfNote}
               onChange={(e) =>
                 setNoteDetails({ ...noteDetails, typeOfNote: e.target.value })
               }
@@ -97,6 +97,7 @@ export const EditModel = () => {
               <option value="Health">Health</option>
             </select>
             <select
+              value={noteDetails.priority}
               onChange={(e) => {
                 setNoteDetails({ ...noteDetails, priority: e.target.value });
               }}
