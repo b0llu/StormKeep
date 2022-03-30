@@ -18,7 +18,7 @@ export const LandingPage = () => {
         </Link>
       </div>
       <div className="landing-right">
-        <img className="rsp-img" src="/assets/landing-img.svg" alt="" />
+        <img className="rsp-img" src="/assets/landing-img.svg" alt="Hero-Img" />
       </div>
     </div>
   );
