@@ -22,7 +22,7 @@ export const Header = () => {
           )}
         <div className="margin-left-auto">
           <div className="icon-container">
-            <p className="icon-color">{user}</p>
+            {user && <p className="icon-color">Hello, {user}</p>}
             <div className="badge">
               <i className="fa-solid fas fa-user icon-color"></i>
             </div>
