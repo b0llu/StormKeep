@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useReducerContext } from "./Reducer.context";
 
 const NoteContext = createContext();

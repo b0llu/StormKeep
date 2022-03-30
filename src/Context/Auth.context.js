@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
+import { useArchivedNotesContext } from "./ArchivedNotes.context";
 import { useNoteContext } from "./Notes.context";
 import { useReducerContext } from "./Reducer.context";
 
@@ -8,6 +9,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const { dispatch } = useReducerContext();
   const { setNotes } = useNoteContext();
+  const { setArchivedNotes } = useArchivedNotesContext();
   const encodedToken = localStorage.getItem("StormKeepToken");
   const [userState, setUserState] = useState([]);
 
@@ -65,12 +67,20 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     (async function () {
-      try {
-        const { data } = await axios.post("/api/auth/verify", {
-          encodedToken: encodedToken,
-        });
-        setUserState(data);
-      } catch (error) {}
+      if (encodedToken) {
+        try {
+          const response = await axios.post("/api/auth/verify", {
+            encodedToken: encodedToken,
+          });
+          if (response && response.data) {
+            setUserState(response.data.user);
+            setNotes(response.data.user.notes);
+            setArchivedNotes(response.data.user.archives);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
     })();
   }, [encodedToken]);
 
