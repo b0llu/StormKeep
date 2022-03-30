@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
 export const LandingPage = () => {
+  const user = localStorage.getItem("StormKeepUser");
+
   return (
     <div className="landing">
       <div className="landing-left">
@@ -10,12 +12,20 @@ export const LandingPage = () => {
           Manage your daily tasks and workflow in a modern way and boost your
           efficiency without any efforts
         </span>
-        <Link to="/signup">
-          <button className="landing-btn">JOIN NOW</button>
-        </Link>
-        <Link className="landing-link" to="/login">
-          <span>Already Have an account?</span>
-        </Link>
+        {user ? (
+          <Link to="/notes">
+            <button className="landing-btn">TO NOTES</button>
+          </Link>
+        ) : (
+          <Link to="/signup">
+            <button className="landing-btn">JOIN NOW</button>
+          </Link>
+        )}
+        {!user && (
+          <Link className="landing-link" to="/login">
+            <span>Already Have an account?</span>
+          </Link>
+        )}
       </div>
       <div className="landing-right">
         <img className="rsp-img" src="/assets/landing-img.svg" alt="Hero-Img" />

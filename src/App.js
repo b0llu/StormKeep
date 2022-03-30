@@ -1,4 +1,11 @@
-import { ActionBtn, Footer, Header, LandingContainer, Sidebar, Toast } from "./Components";
+import {
+  ActionBtn,
+  Footer,
+  Header,
+  LandingContainer,
+  Sidebar,
+  Toast,
+} from "./Components";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
   AuthContainer,
@@ -12,6 +19,7 @@ import MockAPI from "./Mockman";
 import { ArchivedPage } from "./Pages/ArchivedPage/ArchivedPage";
 import { LabelPage } from "./Pages/LabelPage/LabelPage";
 import { LandingPage } from "./Pages/LandingPage/LandingPage";
+import { TrashPage } from "./Pages/TrashPage/TrashPage";
 
 function App() {
   const location = useLocation();
@@ -31,6 +39,7 @@ function App() {
           <Route path="/notes" element={<NotesPage />} />
           <Route path="/archives" element={<ArchivedPage />} />
           <Route path="/labels" element={<LabelPage />} />
+          <Route path="/trash" element={<TrashPage />} />
         </Route>
 
         <Route element={<RestrictAuth />}>

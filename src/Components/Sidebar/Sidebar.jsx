@@ -93,7 +93,7 @@ export const Sidebar = () => {
               </label>
             </ul>
           )}
-          <Link to="labels" element={<LabelPage />}>
+          <Link to="labels">
             <li className={`${location.pathname === "/labels" && "selected"}`}>
               <span className="material-icons sidebar-icon">label</span>
               <span className="sidebar-headers">Labels</span>
@@ -146,13 +146,19 @@ export const Sidebar = () => {
               })}
             </ul>
           )}
-          <Link to="/archives" element={<ArchivedPage />}>
+          <Link to="/archives">
             <li
               className={`${location.pathname === "/archives" && "selected"}`}
             >
               <span className="material-icons sidebar-icon">archive</span>
               <span className="sidebar-headers">Archived</span>
             </li>
+          </Link>
+          <Link to='/trash'>
+          <li className={`${location.pathname === "/trash" && "selected"}`}>
+            <span class="material-icons sidebar-icon">delete_forever</span>
+            <span className="sidebar-headers">Trashed</span>
+          </li>
           </Link>
         </ul>
       </div>

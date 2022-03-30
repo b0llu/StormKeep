@@ -32,7 +32,7 @@ textarea::-webkit-input-placeholder {
   outline: none;
   word-wrap: break-word;
   resize: none;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .input-text-section-container .title-text-style {
@@ -47,13 +47,13 @@ textarea::-webkit-input-placeholder {
 .pin-icon {
   margin: 1rem 0 0 0;
   cursor: pointer;
-  color: var(--content-color);
+  color: var(--for-theme);
   font-size: 2.5rem;
   font-weight: 500;
 }
 
 .active {
-  color: var(--primary-color);
+  color: var(--for-theme);
 }
 
 .edit-section select {
@@ -72,9 +72,9 @@ textarea::-webkit-input-placeholder {
   display: inline-block;
   padding: 3px;
   background-color: inherit;
-  border: 1px solid var(--content-color);
+  border: 1px solid var(--for-theme);
   font-size: 2rem;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .tag:focus {
@@ -89,7 +89,7 @@ textarea::-webkit-input-placeholder {
   cursor: pointer;
   border-radius: 1rem;
   padding: 0.3rem 1rem;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 .edit-section-container button:hover {
   color: var(--primary-color);

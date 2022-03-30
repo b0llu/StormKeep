@@ -12,7 +12,7 @@
 .new-note-container h1 {
   font-size: 3rem;
   font-weight: 500;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .new-note-container .input-container {
@@ -42,14 +42,14 @@
   margin: 0 0 1rem 0;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .input-text-section .h3 {
   font-size: 1.5rem;
   font-weight: 500;
   word-break: break-all;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .edit-section {
@@ -61,11 +61,11 @@
 .edit-section h2 {
   font-size: 2rem;
   font-weight: 500;
-  border: 1px solid var(--content-color);
+  border: 1px solid var(--for-theme);
   border-radius: 3px;
   padding: 3px;
   margin-left: 5px;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 .note-icon-container{
@@ -101,7 +101,7 @@
 
 .pin-text, .other-text {
   margin-top: 2rem;
-  color: var(--content-color);
+  color: var(--for-theme);
 }
 
 @media screen and (max-width: 850px) {
