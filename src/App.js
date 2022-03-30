@@ -1,4 +1,4 @@
-import { Footer, Header, LandingContainer, Sidebar, Toast } from "./Components";
+import { ActionBtn, Footer, Header, LandingContainer, Sidebar, Toast } from "./Components";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
   AuthContainer,
@@ -53,6 +53,7 @@ function App() {
         </Route>
         <Route path="/mockman" element={<MockAPI />} />
       </Routes>
+      <ActionBtn />
       <Footer />
     </LandingContainer>
   );

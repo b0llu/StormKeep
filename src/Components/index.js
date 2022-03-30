@@ -5,3 +5,4 @@ export { Sidebar } from "./Sidebar/Sidebar";
 export { Toast } from "./Toast/Toast";
 export { ColorPalette } from "./ColorPalette/ColorPalette";
 export { Loader } from "./Loader/Loader";
+export { ActionBtn } from "./ActionBtn/ActionBtn";
