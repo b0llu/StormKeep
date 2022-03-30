@@ -29,6 +29,22 @@ export const reducer = (state, action) => {
         },
       };
 
+    // label filter
+    case "FILTER":
+      return {
+        ...state,
+        [action.filterType]: state[action.filterType].includes(action.filter)
+          ? state[action.filterType].filter((type) => type !== action.filter)
+          : [...state[action.filterType], action.filter],
+      };
+
+    // priority sorting
+    case "HIGH_PRIORITY":
+      return {
+        ...state,
+        sort: action.payload,
+      };
+
     // toast state handler
     case "TOAST_STATE_CLEAN":
       return {

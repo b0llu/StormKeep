@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { useReducerContext } from "./Reducer.context";
 
 const NoteContext = createContext();
@@ -45,12 +45,7 @@ const NoteProvider = ({ children }) => {
       const response = await axios.post(
         `/api/notes/${id}`,
         {
-          note: {
-            title: notes.title,
-            description: notes.description,
-            typeOfNote: notes.typeOfNote,
-            pinned: notes.pinned
-          },
+          note: notes,
         },
         { headers: { authorization: encodedToken } }
       );
@@ -92,6 +87,7 @@ const NoteProvider = ({ children }) => {
         pinHandler,
         isEditMode,
         setIsEditMode,
+        encodedToken,
       }}
     >
       {children}
