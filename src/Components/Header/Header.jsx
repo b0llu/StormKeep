@@ -16,9 +16,9 @@ export const Header = () => {
   return (
     <nav>
       <div className="navbar">
-        <h1 className="name">
-          <i className="fas fa-bolt"></i> StormKeep
-        </h1>
+          <Link className="name" to="/notes">
+            <i className="fas fa-bolt"></i> StormKeep
+          </Link>
         {location.pathname !== "/" &&
           location.pathname !== "/signup" &&
           location.pathname !== "/login" && (
