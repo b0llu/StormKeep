@@ -1,9 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import { useNoteContext } from "../../Context/Notes.context";
 import { useTrashContext } from "../../Context/Trash.context";
+import { useDocTitle } from "../../Hook/useTitle";
 import "./TrashPage.css";
 
 export const TrashPage = () => {
+  useDocTitle("Trash | StormKeep")
   const { trashedNote, removeFromTrashHandler } = useTrashContext();
   const { addNote } = useNoteContext();
 

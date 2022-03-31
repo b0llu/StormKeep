@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAuthContext } from "../../../../Context/Auth.context";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
 import { SignupBox } from "../SignupBox/SignupBox";
+import { useDocTitle } from "../../../../Hook/useTitle";
 
 export const LoginBox = () => {
   const { login, testLogger } = useAuthContext();
@@ -11,6 +12,7 @@ export const LoginBox = () => {
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
   const [trigger, setTrigger] = useState(true)
+  useDocTitle("Login | StormKeep")
 
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
   const emailValidation =

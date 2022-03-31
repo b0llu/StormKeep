@@ -1,10 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import { useArchivedNotesContext } from "../../Context/ArchivedNotes.context";
+import { useDocTitle } from "../../Hook/useTitle";
 import "./ArchivedPage.css";
 
 export const ArchivedPage = () => {
   const { archivedNotes, archiveToNotes, removeFromArchive } =
   useArchivedNotesContext();
+  useDocTitle("Archives | StormKeep")
   
   return (
     <div className="archived-container">
