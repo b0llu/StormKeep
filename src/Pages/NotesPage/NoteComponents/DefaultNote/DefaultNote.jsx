@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ColorPalette } from "../../../../Components";
 import { useNoteContext } from "../../../../Context/Notes.context";
+import { useReducerContext } from "../../../../Context/Reducer.context";
 import { useThemeContext } from "../../../../Context/Theme.context";
 import "./DefaultNote.css";
 
 export const DefaultNote = () => {
+  const { dispatch } = useReducerContext();
   const { theme } = useThemeContext();
   const { addNote } = useNoteContext();
   const [noteDetails, setNoteDetails] = useState({
@@ -22,6 +24,28 @@ export const DefaultNote = () => {
       noteColor: color,
     });
   }
+
+  const noteAddHandler = () => {
+    if (!noteDetails.title || !noteDetails.description) {
+      dispatch({ type: "ERROR_TOAST", payload: "Fill Both Inputs" });
+    } else {
+      addNote({
+        ...noteDetails,
+        typeOfNote:
+          noteDetails.typeOfNote === "Tag" ? "Home" : noteDetails.typeOfNote,
+        priority:
+          noteDetails.priority === "Priority" ? "Low" : noteDetails.priority,
+      }),
+        setNoteDetails({
+          title: "",
+          description: "",
+          typeOfNote: "Tag",
+          priority: "Priority",
+          pinned: false,
+          noteColor: null,
+        });
+    }
+  };
 
   return (
     <div
@@ -114,31 +138,7 @@ export const DefaultNote = () => {
             colorChangeHandler={colorChangeHandler}
           />
         </div>
-        <button
-          onClick={() => {
-            addNote({
-              ...noteDetails,
-              typeOfNote:
-                noteDetails.typeOfNote === "Tag"
-                  ? "Home"
-                  : noteDetails.typeOfNote,
-              priority:
-                noteDetails.priority === "Priority"
-                  ? "Low"
-                  : noteDetails.priority,
-            }),
-              setNoteDetails({
-                title: "",
-                description: "",
-                typeOfNote: "Tag",
-                priority: "Priority",
-                pinned: false,
-                noteColor: null,
-              });
-          }}
-        >
-          Add
-        </button>
+        <button onClick={noteAddHandler}>Add</button>
       </div>
     </div>
   );

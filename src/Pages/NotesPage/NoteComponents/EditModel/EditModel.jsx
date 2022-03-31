@@ -2,8 +2,10 @@ import "./EditModel.css";
 import { useState } from "react";
 import { useNoteContext } from "../../../../Context/Notes.context";
 import { ColorPalette } from "../../../../Components";
+import { useThemeContext } from "../../../../Context/Theme.context";
 
 export const EditModel = () => {
+  const { theme } = useThemeContext();
   const { editNote, setIsEditMode, isEditMode } = useNoteContext();
   const [noteDetails, setNoteDetails] = useState({
     title: isEditMode.note.title,
@@ -87,7 +89,7 @@ export const EditModel = () => {
               onChange={(e) =>
                 setNoteDetails({ ...noteDetails, typeOfNote: e.target.value })
               }
-              className="tag"
+              className={`${theme === "dark" ? "tag tag-dark-mode" : "tag"}`}
             >
               <option value="Home">Home</option>
               <option value="Work">Work</option>
@@ -101,7 +103,7 @@ export const EditModel = () => {
               onChange={(e) => {
                 setNoteDetails({ ...noteDetails, priority: e.target.value });
               }}
-              className="tag"
+              className={`${theme === "dark" ? "tag tag-dark-mode" : "tag"}`}
             >
               <option value="Priority" hidden>
                 Priority
