@@ -10,16 +10,16 @@ export const NewNotes = () => {
   const { removeNote, pinHandler, isEditMode, setIsEditMode } =
     useNoteContext();
   const { addToArchive } = useArchivedNotesContext();
-  const { sortedPriorites } = useFunctionCombiner();
+  const { searchBarHandle } = useFunctionCombiner();
 
   return (
     <>
       <div className="new-note-container">
-        {sortedPriorites.filter((n) => n.pinned).length === 0 ? null : (
+        {searchBarHandle.filter((n) => n.pinned).length === 0 ? null : (
           <h1 className="pin-text">Pinned</h1>
         )}
         <div className="pinned">
-          {sortedPriorites
+          {searchBarHandle
             .filter((n) => n.pinned)
             .map((note) => {
               return (
@@ -34,6 +34,7 @@ export const NewNotes = () => {
                       <ReactMarkdown className="h3">
                         {note.description}
                       </ReactMarkdown>
+                      <h3>{note.createdAtDate}</h3>
                     </div>
                     <div>
                       <span
@@ -65,7 +66,7 @@ export const NewNotes = () => {
                         archive
                       </span>
                       <span
-                        onClick={() => removeNote(note._id)}
+                        onClick={() => removeNote(note._id, note)}
                         className="material-icons pin-icon"
                       >
                         delete
@@ -76,11 +77,11 @@ export const NewNotes = () => {
               );
             })}
         </div>
-        {sortedPriorites.filter((n) => !n.pinned).length === 0 ? null : (
+        {searchBarHandle.filter((n) => !n.pinned).length === 0 ? null : (
           <h1 className="other-text">Other</h1>
         )}
         <div className="other">
-          {sortedPriorites
+          {searchBarHandle
             .filter((n) => !n.pinned)
             .map((note) => {
               return (
@@ -95,6 +96,7 @@ export const NewNotes = () => {
                       <ReactMarkdown className="h3">
                         {note.description}
                       </ReactMarkdown>
+                      <h3>{note.createdAtDate}</h3>
                     </div>
                     <div>
                       <span
@@ -126,7 +128,7 @@ export const NewNotes = () => {
                         archive
                       </span>
                       <span
-                        onClick={() => removeNote(note._id)}
+                        onClick={() => removeNote(note._id, note)}
                         className="material-icons pin-icon"
                       >
                         delete

@@ -11,7 +11,7 @@ import "./Sidebar.css";
 
 export const Sidebar = () => {
   const { notes } = useNoteContext();
-  const { dispatch, labels, loading, sort } = useReducerContext();
+  const { dispatch, labels, loading, sort, timeSort } = useReducerContext();
   const [notesState, setNotesState] = useState(false);
   const [labelsState, setLabelsState] = useState(false);
   const location = useLocation();
@@ -54,7 +54,7 @@ export const Sidebar = () => {
                   checked={sort === "High"}
                   onChange={() => {
                     dispatch({
-                      type: "HIGH_PRIORITY",
+                      type: "PRIORITY",
                       payload: "High",
                     });
                   }}
@@ -69,7 +69,7 @@ export const Sidebar = () => {
                   checked={sort === "Medium"}
                   onChange={() => {
                     dispatch({
-                      type: "HIGH_PRIORITY",
+                      type: "PRIORITY",
                       payload: "Medium",
                     });
                   }}
@@ -84,12 +84,41 @@ export const Sidebar = () => {
                   checked={sort === "Low"}
                   onChange={() => {
                     dispatch({
-                      type: "HIGH_PRIORITY",
+                      type: "PRIORITY",
                       payload: "Low",
                     });
                   }}
                 />
                 Low
+              </label>
+              <span className="sort-header">Time Sorting :</span>
+              <label>
+                <input
+                  className="label-input"
+                  type="radio"
+                  name="time"
+                  checked={timeSort === "Latest"}
+                  onChange={() => {
+                    dispatch({
+                      type: "LATEST",
+                    });
+                  }}
+                />
+                Latest
+              </label>
+              <label>
+                <input
+                  className="label-input"
+                  type="radio"
+                  name="time"
+                  checked={timeSort === "Old"}
+                  onChange={() => {
+                    dispatch({
+                      type: "OLD",
+                    });
+                  }}
+                />
+                Old
               </label>
             </ul>
           )}
@@ -154,11 +183,13 @@ export const Sidebar = () => {
               <span className="sidebar-headers">Archived</span>
             </li>
           </Link>
-          <Link to='/trash'>
-          <li className={`${location.pathname === "/trash" && "selected"}`}>
-            <span class="material-icons sidebar-icon">delete_forever</span>
-            <span className="sidebar-headers">Trashed</span>
-          </li>
+          <Link to="/trash">
+            <li className={`${location.pathname === "/trash" && "selected"}`}>
+              <span className="material-icons sidebar-icon">
+                delete_forever
+              </span>
+              <span className="sidebar-headers">Trashed</span>
+            </li>
           </Link>
         </ul>
       </div>

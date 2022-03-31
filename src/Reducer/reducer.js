@@ -39,10 +39,38 @@ export const reducer = (state, action) => {
       };
 
     // priority sorting
-    case "HIGH_PRIORITY":
+    case "PRIORITY":
       return {
         ...state,
         sort: action.payload,
+      };
+
+    // search bar
+    case "SEARCH_BAR":
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
+
+    // sort of high to low
+    case "LATEST":
+      return {
+        ...state,
+        timeSort: "Latest",
+      };
+
+    // sort of low to high
+    case "OLD":
+      return {
+        ...state,
+        timeSort: "Old",
+      };
+
+    // add to cart
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
       };
 
     // toast state handler

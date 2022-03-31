@@ -61,6 +61,10 @@
   display: none;
 }
 
+.sort-header {
+  margin-top: 1rem;
+}
+
 @media screen and (max-width: 850px) {
   aside {
     height: max-content;

@@ -8,6 +8,7 @@ import { ReducerProvider } from "./Context/Reducer.context";
 import { NoteProvider } from "./Context/Notes.context";
 import { ArchivedNotesProvider } from "./Context/ArchivedNotes.context";
 import { ThemeProvider } from "./Context/Theme.context";
+import { TrashProvider } from "./Context/Trash.context";
 
 // Call make Server
 makeServer();
@@ -15,17 +16,19 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <ReducerProvider>
-      <NoteProvider>
-        <ArchivedNotesProvider>
-          <AuthProvider>
-            <ThemeProvider>
-              <BrowserRouter>
-                <App />
-              </BrowserRouter>
-            </ThemeProvider>
-          </AuthProvider>
-        </ArchivedNotesProvider>
-      </NoteProvider>
+      <TrashProvider>
+        <NoteProvider>
+          <ArchivedNotesProvider>
+            <AuthProvider>
+              <ThemeProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </ThemeProvider>
+            </AuthProvider>
+          </ArchivedNotesProvider>
+        </NoteProvider>
+      </TrashProvider>
     </ReducerProvider>
   </React.StrictMode>,
   document.getElementById("root")

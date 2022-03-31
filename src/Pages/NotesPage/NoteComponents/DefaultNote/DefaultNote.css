@@ -81,6 +81,10 @@ textarea::-webkit-input-placeholder {
   outline: none;
 }
 
+.edit-section-container .tag-dark-mode {
+  background-color: var(--card-container-bg);
+}
+
 .edit-section-container button {
   background-color: transparent;
   border: none;

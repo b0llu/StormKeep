@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Context/Auth.context";
+import { useReducerContext } from "../../Context/Reducer.context";
 import { useThemeContext } from "../../Context/Theme.context";
 import { LoginBox } from "../../Pages/AuthPage/ProfileComponents";
 import "./Header.css";
@@ -10,6 +11,7 @@ export const Header = () => {
   const encodedToken = localStorage.getItem("StormKeepToken");
   const { signout } = useAuthContext();
   const location = useLocation();
+  const {dispatch} = useReducerContext()
 
   return (
     <nav>
@@ -20,7 +22,14 @@ export const Header = () => {
         {location.pathname !== "/" &&
           location.pathname !== "/signup" &&
           location.pathname !== "/login" && (
-            <input className="header-input" placeholder="Search" type="text" />
+            <input
+              onChange={(e) =>
+                dispatch({ type: "SEARCH_BAR", payload: e.target.value })
+              }
+              className="header-input"
+              placeholder="Search"
+              type="text"
+            />
           )}
         <div className="margin-left-auto">
           <div className="icon-container">
@@ -46,7 +55,14 @@ export const Header = () => {
         {location.pathname !== "/" &&
           location.pathname !== "/signup" &&
           location.pathname !== "/login" && (
-            <input className="mobile-input" type="text" placeholder="Search" />
+            <input
+              onChange={(e) =>
+                dispatch({ type: "SEARCH_BAR", payload: e.target.value })
+              }
+              className="mobile-input"
+              type="text"
+              placeholder="Search"
+            />
           )}
       </div>
     </nav>

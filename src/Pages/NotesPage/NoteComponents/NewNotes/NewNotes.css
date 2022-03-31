@@ -52,6 +52,12 @@
   color: var(--for-theme);
 }
 
+.input-text-section h3 {
+  color: var(--for-theme);
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
 .edit-section {
   display: flex;
   align-items: center;

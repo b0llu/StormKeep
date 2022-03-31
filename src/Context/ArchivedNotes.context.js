@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNoteContext } from "./Notes.context";
 import { useReducerContext } from "./Reducer.context";
+import { useTrashContext } from "./Trash.context";
 
 const ArchivedNotesContext = createContext();
 
@@ -10,6 +11,7 @@ const ArchivedNotesProvider = ({ children }) => {
   const [archivedNotes, setArchivedNotes] = useState([]);
   const { setNotes } = useNoteContext();
   const encodedToken = localStorage.getItem("StormKeepToken");
+  const { trashHandler } = useTrashContext();
 
   const addToArchive = async (note) => {
     try {
@@ -51,15 +53,13 @@ const ArchivedNotesProvider = ({ children }) => {
 
   const removeFromArchive = async (note) => {
     try {
-      const response = await axios.delete(
-        `/api/archives/delete/${note._id}`,
-        {
-          headers: { authorization: encodedToken },
-        }
-      );
+      const response = await axios.delete(`/api/archives/delete/${note._id}`, {
+        headers: { authorization: encodedToken },
+      });
       if (response.status === 200) {
+        trashHandler(note);
         setArchivedNotes(response.data.archives);
-        dispatch({ type: "ERROR_TOAST", payload: "Deleted" });
+        dispatch({ type: "ERROR_TOAST", payload: "Moved To Trash" });
       }
     } catch (err) {
       console.log(err);
@@ -68,7 +68,13 @@ const ArchivedNotesProvider = ({ children }) => {
 
   return (
     <ArchivedNotesContext.Provider
-      value={{ addToArchive, archivedNotes, setArchivedNotes, archiveToNotes, removeFromArchive }}
+      value={{
+        addToArchive,
+        archivedNotes,
+        setArchivedNotes,
+        archiveToNotes,
+        removeFromArchive,
+      }}
     >
       {children}
     </ArchivedNotesContext.Provider>
