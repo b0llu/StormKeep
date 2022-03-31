@@ -11,7 +11,7 @@ export const Header = () => {
   const encodedToken = localStorage.getItem("StormKeepToken");
   const { signout } = useAuthContext();
   const location = useLocation();
-  const {dispatch} = useReducerContext()
+  const { dispatch } = useReducerContext();
 
   return (
     <nav>
@@ -35,7 +35,9 @@ export const Header = () => {
           <div className="icon-container">
             {user && <p className="icon-color">Hello, {user}</p>}
             <div className="badge">
-              <i className="fa-solid fas fa-user icon-color"></i>
+              <Link to="/login">
+                <i className="fa-solid fas fa-user icon-color"></i>
+              </Link>
             </div>
             <Link to="/" element={<LoginBox />}>
               {encodedToken && (
