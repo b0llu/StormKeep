@@ -1,12 +1,14 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useReducerContext } from "./Reducer.context";
+import { useTrashContext } from "./Trash.context";
 
 const NoteContext = createContext();
 
 const NoteProvider = ({ children }) => {
   const { dispatch } = useReducerContext();
   const encodedToken = localStorage.getItem("StormKeepToken");
+  const { trashHandler } = useTrashContext();
   const [notes, setNotes] = useState([]);
   const [isEditMode, setIsEditMode] = useState({ state: false, note: {} });
 
@@ -26,14 +28,15 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  const removeNote = async (id) => {
+  const removeNote = async (id, note) => {
     try {
       const response = await axios.delete(`/api/notes/${id}`, {
         headers: { authorization: encodedToken },
       });
       if (response.status === 200) {
         setNotes(response.data.notes);
-        dispatch({ type: "ERROR_TOAST", payload: "Note Removed" });
+        trashHandler(note);
+        dispatch({ type: "ERROR_TOAST", payload: "Moved To Trash" });
       }
     } catch (err) {
       dispatch({ type: "ERROR_TOAST", payload: "Something went Wrong" });

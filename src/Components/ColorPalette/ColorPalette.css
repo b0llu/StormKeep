@@ -13,6 +13,7 @@
   height: 3.2rem;
   width: 3.2rem;
   transition: 0.2s ease-in-out;
+  color: var(--content-color);
 }
 .palette:hover i {
   color: var(--primary-color);
@@ -20,7 +21,7 @@
 
 .colorPaletteContainer {
   position: absolute;
-  background-color: white;
+  background-color: var(--card-container-bg);
   display: flex;
   padding: 5px;
   z-index: 10;

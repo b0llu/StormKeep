@@ -1,0 +1,25 @@
+.trash-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content:center;
+    flex-wrap: wrap;
+    height: max-content;
+}
+
+.trash-header {
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.trash-header h1 {
+    color: var(--content-color);
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.trash-header h2 {
+    color: var(--content-color);
+    font-size: 3rem;
+    font-weight: 500;
+}

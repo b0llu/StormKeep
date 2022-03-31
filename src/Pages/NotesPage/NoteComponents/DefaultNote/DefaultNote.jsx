@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { ColorPalette } from "../../../../Components";
 import { useNoteContext } from "../../../../Context/Notes.context";
+import { useThemeContext } from "../../../../Context/Theme.context";
 import "./DefaultNote.css";
 
 export const DefaultNote = () => {
+  const { theme } = useThemeContext();
   const { addNote } = useNoteContext();
   const [noteDetails, setNoteDetails] = useState({
     title: "",
     description: "",
     typeOfNote: "Label",
     pinned: false,
-    noteColor: null,
+    noteColor: "var(--card-container-bg)",
     priority: "Priority",
   });
 
@@ -81,7 +83,7 @@ export const DefaultNote = () => {
             onChange={(e) =>
               setNoteDetails({ ...noteDetails, typeOfNote: e.target.value })
             }
-            className="tag"
+            className={`${theme === "dark" ? "tag tag-dark-mode" : "tag"}`}
           >
             <option value="Label" hidden>
               Label
@@ -98,7 +100,7 @@ export const DefaultNote = () => {
             onChange={(e) => {
               setNoteDetails({ ...noteDetails, priority: e.target.value });
             }}
-            className="tag"
+            className={`${theme === "dark" ? "tag tag-dark-mode" : "tag"}`}
           >
             <option value="Priority" hidden>
               Priority

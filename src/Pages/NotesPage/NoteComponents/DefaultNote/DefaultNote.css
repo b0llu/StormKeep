@@ -4,6 +4,7 @@ textarea {
 
 textarea::-webkit-input-placeholder {
   padding-left: 0;
+  color: var(--for-theme);
 }
 
 .input-container {
@@ -13,6 +14,7 @@ textarea::-webkit-input-placeholder {
   position: relative;
   width: 60%;
   height: max-content;
+  background-color: var(--card-container-bg);
 }
 
 .input-text-section-container {
@@ -31,6 +33,7 @@ textarea::-webkit-input-placeholder {
   outline: none;
   word-wrap: break-word;
   resize: none;
+  color: var(--for-theme);
 }
 
 .input-text-section-container .title-text-style {
@@ -45,13 +48,13 @@ textarea::-webkit-input-placeholder {
 .pin-icon {
   margin: 1rem 0 0 0;
   cursor: pointer;
-  color: var(--content-color);
+  color: var(--for-theme);
   font-size: 2.5rem;
   font-weight: 500;
 }
 
 .active {
-  color: var(--primary-color);
+  color: var(--for-theme);
 }
 
 .edit-section select {
@@ -70,12 +73,17 @@ textarea::-webkit-input-placeholder {
   display: inline-block;
   padding: 3px;
   background-color: inherit;
-  border: 1px solid var(--content-color);
+  border: 1px solid var(--for-theme);
   font-size: 2rem;
+  color: var(--for-theme);
 }
 
 .tag:focus {
   outline: none;
+}
+
+.edit-section-container .tag-dark-mode {
+  background-color: var(--card-container-bg);
 }
 
 .edit-section-container button {
@@ -86,6 +94,7 @@ textarea::-webkit-input-placeholder {
   cursor: pointer;
   border-radius: 1rem;
   padding: 0.3rem 1rem;
+  color: var(--for-theme);
 }
 .edit-section-container button:hover {
   color: var(--primary-color);
