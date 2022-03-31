@@ -50,14 +50,14 @@ export const createNoteHandler = function (schema, request) {
         ...note,
         _id: uuid(),
         tags: [],
-        // createdAtTime: formatTime(),
+        createdAtTime: formatTime(),
         createdAtDate: formatDate(),
       });
     } else {
       user.notes.push({
         ...note,
         _id: uuid(),
-        // createdAt: formatTime(),
+        createdAtTime: formatTime(),
         createdAtDate: formatDate(),
       });
     }

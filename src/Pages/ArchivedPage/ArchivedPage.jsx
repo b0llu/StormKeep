@@ -29,6 +29,7 @@ export const ArchivedPage = () => {
                   <ReactMarkdown className="h3">
                     {note.description}
                   </ReactMarkdown>
+                  <h3>{note.createdAtTime}</h3>
                 </div>
               </div>
               <div className="edit-section-container">

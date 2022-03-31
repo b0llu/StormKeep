@@ -45,7 +45,7 @@ export const Sidebar = () => {
           </Link>
           {location.pathname === "/notes" && notes.length !== 0 && (
             <ul className={`label-list ${notesState && "for-mobile"}`}>
-              <span className="sort-header">Priority Sorting :</span>
+              <span className="sort-header">Sort by Priority :</span>
               <label>
                 <input
                   className="label-input"
@@ -91,7 +91,7 @@ export const Sidebar = () => {
                 />
                 Low
               </label>
-              <span className="sort-header">Time Sorting :</span>
+              <span className="sort-header">Sort by Date :</span>
               <label>
                 <input
                   className="label-input"

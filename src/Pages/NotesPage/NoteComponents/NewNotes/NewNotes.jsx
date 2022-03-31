@@ -34,7 +34,7 @@ export const NewNotes = () => {
                       <ReactMarkdown className="h3">
                         {note.description}
                       </ReactMarkdown>
-                      <h3>{note.createdAtDate}</h3>
+                      <h3>{note.createdAtTime}</h3>
                     </div>
                     <div>
                       <span
@@ -96,7 +96,7 @@ export const NewNotes = () => {
                       <ReactMarkdown className="h3">
                         {note.description}
                       </ReactMarkdown>
-                      <h3>{note.createdAtDate}</h3>
+                      <h3>{note.createdAtTime}</h3>
                     </div>
                     <div>
                       <span

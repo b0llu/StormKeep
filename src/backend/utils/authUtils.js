@@ -19,5 +19,5 @@ export const requiresAuth = function (request) {
   );
 };
 
-// export const formatTime = () => dayjs().format("HH:mm:ss");
+export const formatTime = () => dayjs().format("MMM DD, YYYY");
 export const formatDate = () => dayjs().format("MMM DD, YYYY HH:mm:ss:ms");
