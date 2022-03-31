@@ -4,6 +4,7 @@ textarea {
 
 textarea::-webkit-input-placeholder {
   padding-left: 0;
+  color: var(--for-theme);
 }
 
 .input-container {

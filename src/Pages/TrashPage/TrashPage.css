@@ -1,12 +1,13 @@
 .trash-container {
     display: flex;
     align-items: flex-start;
-    justify-content:flex-start;
+    justify-content:center;
     flex-wrap: wrap;
     height: max-content;
 }
 
 .trash-header {
+    margin-top: 1rem;
     text-align: center;
     width: 100%;
 }

@@ -10,7 +10,7 @@ export const ArchivedPage = () => {
     <div className="archived-container">
       <div style={{ textAlign: "center", width: "100%" }}>
         {archivedNotes.length === 0 ? (
-          <h1 style={{ color: "var(--content-color)" }}>No Archives</h1>
+          <h1 style={{ color: "var(--content-color)" }}>No Archived Notes</h1>
         ) : (
           <h1 className="pin-text">Archives</h1>
         )}
