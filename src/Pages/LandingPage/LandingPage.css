@@ -29,7 +29,7 @@
 
 .landing-btn {
   border: none;
-  color: var(--white);
+  color: var(--for-theme);
   background-color: #3da4df;
   padding: 1rem;
   border-radius: 1rem;

@@ -1,5 +1,5 @@
 import { Response } from "miragejs";
-import { requiresAuth } from "../utils/authUtils";
+import { requiresAuth, formatDate, formatTime } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
 
 /**
@@ -46,9 +46,20 @@ export const createNoteHandler = function (schema, request) {
     }
     const { note } = JSON.parse(request.requestBody);
     if (!note.tags) {
-      user.notes.push({ ...note, _id: uuid(), tags: [] });
+      user.notes.push({
+        ...note,
+        _id: uuid(),
+        tags: [],
+        createdAtTime: formatTime(),
+        createdAtDate: formatDate(),
+      });
     } else {
-      user.notes.push({ ...note, _id: uuid() });
+      user.notes.push({
+        ...note,
+        _id: uuid(),
+        createdAtTime: formatTime(),
+        createdAtDate: formatDate(),
+      });
     }
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
