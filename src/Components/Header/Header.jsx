@@ -35,11 +35,11 @@ export const Header = () => {
           <div className="icon-container">
             {user && <p className="icon-color">Hello, {user}</p>}
             <div className="badge">
-              <Link to="/login">
+              <Link to="/dashboard">
                 <i className="fa-solid fas fa-user icon-color"></i>
               </Link>
             </div>
-            <Link to="/" element={<LoginBox />}>
+            <Link to="/">
               {encodedToken && (
                 <div onClick={() => signout()} className="badge">
                   <i className="fas fa-sign-out icon-color"></i>
