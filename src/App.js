@@ -20,6 +20,7 @@ import { ArchivedPage } from "./Pages/ArchivedPage/ArchivedPage";
 import { LabelPage } from "./Pages/LabelPage/LabelPage";
 import { LandingPage } from "./Pages/LandingPage/LandingPage";
 import { TrashPage } from "./Pages/TrashPage/TrashPage";
+import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 
 function App() {
   const location = useLocation();
@@ -29,8 +30,11 @@ function App() {
       <Toast />
       <Header />
       {location.pathname === "/login" ||
-        location.pathname === "/signup" ||
-        (location.pathname === "/" ? null : <Sidebar />)}
+      location.pathname === "/signup" ||
+      location.pathname === "/" ||
+      location.pathname === "/dashboard" ? null : (
+        <Sidebar />
+      )}
 
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -40,6 +44,7 @@ function App() {
           <Route path="/archives" element={<ArchivedPage />} />
           <Route path="/labels" element={<LabelPage />} />
           <Route path="/trash" element={<TrashPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
         </Route>
 
         <Route element={<RestrictAuth />}>

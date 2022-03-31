@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useDocTitle } from "../../Hook/useTitle";
 import "./LandingPage.css";
 
 export const LandingPage = () => {
+  useDocTitle("Home | StormKeep")
   const user = localStorage.getItem("StormKeepUser");
 
   return (

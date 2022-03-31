@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useNoteContext } from "../../Context/Notes.context";
 import { useReducerContext } from "../../Context/Reducer.context";
-import { ArchivedPage } from "../../Pages/ArchivedPage/ArchivedPage";
-import { LabelPage } from "../../Pages/LabelPage/LabelPage";
 import { NotesPage } from "../../Pages/NotesPage/NotesPage";
 import { Loader } from "../Loader/Loader";
 import { labelTypes } from "./label-type.data";

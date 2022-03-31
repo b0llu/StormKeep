@@ -1,9 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import { useNoteContext } from "../../Context/Notes.context";
 import { useFunctionCombiner } from "../../Hook/useFunctionCombiner";
+import { useDocTitle } from "../../Hook/useTitle";
 import { EditModel } from "../NotesPage/NoteComponents/EditModel/EditModel";
 
 export const LabelPage = () => {
+  useDocTitle("Lables | StormKeep")
   const { removeNote, isEditMode, setIsEditMode } = useNoteContext();
   const { sortedLables } = useFunctionCombiner();
 
