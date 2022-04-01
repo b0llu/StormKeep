@@ -48,7 +48,7 @@ export const LabelPage = () => {
                     edit
                   </span>
                   <span
-                    onClick={() => removeNote(note._id)}
+                    onClick={() => removeNote(note._id, note)}
                     className="material-icons pin-icon"
                   >
                     delete
