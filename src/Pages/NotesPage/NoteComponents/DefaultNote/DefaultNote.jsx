@@ -32,14 +32,14 @@ export const DefaultNote = () => {
       addNote({
         ...noteDetails,
         typeOfNote:
-          noteDetails.typeOfNote === "Tag" ? "Home" : noteDetails.typeOfNote,
+          noteDetails.typeOfNote === "Label" ? "Home" : noteDetails.typeOfNote,
         priority:
           noteDetails.priority === "Priority" ? "Low" : noteDetails.priority,
       }),
         setNoteDetails({
           title: "",
           description: "",
-          typeOfNote: "Tag",
+          typeOfNote: "Label",
           priority: "Priority",
           pinned: false,
           noteColor: null,
