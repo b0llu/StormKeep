@@ -2,20 +2,20 @@ import { useNoteContext } from "../Context/Notes.context";
 import { useReducerContext } from "../Context/Reducer.context";
 import {
   labelFilter,
-  prioritySorting,
+  priorityfiltering,
   searchBarHandler,
   getSortedDates,
 } from "../Reducer/filterFunctions";
 
 export const useFunctionCombiner = () => {
-  const { labels, sort, searchTerm, timeSort } = useReducerContext();
+  const { labels, priority, searchTerm, timeSort } = useReducerContext();
   const { notes } = useNoteContext();
 
   const sortedLables = labelFilter(notes, labels);
 
-  const sortedPriorites = prioritySorting(notes, sort);
+  const filteredPriorites = priorityfiltering(notes, priority);
 
-  const sortedDates = getSortedDates(sortedPriorites, timeSort);
+  const sortedDates = getSortedDates(filteredPriorites, timeSort);
 
   const searchBarHandle = searchBarHandler(sortedDates, searchTerm);
 

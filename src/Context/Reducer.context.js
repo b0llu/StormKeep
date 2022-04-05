@@ -4,15 +4,17 @@ import { reducer } from "../Reducer/reducer";
 const ReducerContext = createContext();
 
 const ReducerProvider = ({ children }) => {
-  const [{ forToast, labels, loading, sort, searchTerm, timeSort }, dispatch] =
-    useReducer(reducer, {
-      forToast: { text: "", trigger: false, selector: "" },
-      labels: [],
-      loading: false,
-      sort: null,
-      searchTerm: "",
-      timeSort: null,
-    });
+  const [
+    { forToast, labels, loading, priority, searchTerm, timeSort },
+    dispatch,
+  ] = useReducer(reducer, {
+    forToast: { text: "", trigger: false, selector: "" },
+    labels: [],
+    loading: false,
+    priority: [],
+    searchTerm: "",
+    timeSort: null,
+  });
 
   return (
     <ReducerContext.Provider
@@ -20,7 +22,7 @@ const ReducerProvider = ({ children }) => {
         forToast,
         labels,
         loading,
-        sort,
+        priority,
         searchTerm,
         timeSort,
         dispatch,

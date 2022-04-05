@@ -9,7 +9,7 @@ import "./Sidebar.css";
 
 export const Sidebar = () => {
   const { notes } = useNoteContext();
-  const { dispatch, labels, loading, sort, timeSort } = useReducerContext();
+  const { dispatch, labels, loading, priority, timeSort } = useReducerContext();
   const [notesState, setNotesState] = useState(false);
   const [labelsState, setLabelsState] = useState(false);
   const location = useLocation();
@@ -43,17 +43,24 @@ export const Sidebar = () => {
           </Link>
           {location.pathname === "/notes" && notes.length !== 0 && (
             <ul className={`label-list ${notesState && "for-mobile"}`}>
+              <button
+                onClick={() => dispatch({ type: "PRIORITY_RESET" })}
+                className="reset-btn"
+              >
+                Reset
+              </button>
               <span className="sort-header">Sort by Priority :</span>
               <label>
                 <input
                   className="label-input"
-                  type="radio"
-                  name="sort"
-                  checked={sort === "High"}
-                  onChange={() => {
+                  type="checkbox"
+                  value="High"
+                  checked={priority.includes("High")}
+                  onChange={(e) => {
                     dispatch({
-                      type: "PRIORITY",
-                      payload: "High",
+                      type: "PRIORITY_FILTER",
+                      filterType: "priority",
+                      filter: e.target.value,
                     });
                   }}
                 />
@@ -62,13 +69,14 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="label-input"
-                  type="radio"
-                  name="sort"
-                  checked={sort === "Medium"}
-                  onChange={() => {
+                  type="checkbox"
+                  value="Medium"
+                  checked={priority.includes("Medium")}
+                  onChange={(e) => {
                     dispatch({
-                      type: "PRIORITY",
-                      payload: "Medium",
+                      type: "PRIORITY_FILTER",
+                      filterType: "priority",
+                      filter: e.target.value,
                     });
                   }}
                 />
@@ -77,13 +85,14 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="label-input"
-                  type="radio"
-                  name="sort"
-                  checked={sort === "Low"}
-                  onChange={() => {
+                  type="checkbox"
+                  value="Low"
+                  checked={priority.includes("Low")}
+                  onChange={(e) => {
                     dispatch({
-                      type: "PRIORITY",
-                      payload: "Low",
+                      type: "PRIORITY_FILTER",
+                      filterType: "priority",
+                      filter: e.target.value,
                     });
                   }}
                 />
@@ -145,6 +154,12 @@ export const Sidebar = () => {
           </Link>
           {location.pathname === "/labels" && notes.length !== 0 && (
             <ul className={`label-list ${labelsState && "for-mobile"}`}>
+              <button
+                onClick={() => dispatch({ type: "LABEL_RESET" })}
+                className="reset-btn"
+              >
+                Reset
+              </button>
               {labelTypes.map((label) => {
                 return (
                   <div key={label.type}>
@@ -159,7 +174,7 @@ export const Sidebar = () => {
                           checked={labels.includes(label.type)}
                           onChange={(e) => {
                             dispatch({
-                              type: "FILTER",
+                              type: "LABEL_FILTER",
                               filterType: "labels",
                               filter: e.target.value,
                             });

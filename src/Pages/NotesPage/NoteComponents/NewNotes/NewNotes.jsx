@@ -1,5 +1,4 @@
 import ReactMarkdown from "react-markdown";
-import { useState } from "react";
 import { useArchivedNotesContext } from "../../../../Context/ArchivedNotes.context";
 import { useNoteContext } from "../../../../Context/Notes.context";
 import { EditModel } from "../EditModel/EditModel";

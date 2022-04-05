@@ -30,12 +30,36 @@ export const reducer = (state, action) => {
       };
 
     // label filter
-    case "FILTER":
+    case "LABEL_FILTER":
       return {
         ...state,
         [action.filterType]: state[action.filterType].includes(action.filter)
           ? state[action.filterType].filter((type) => type !== action.filter)
           : [...state[action.filterType], action.filter],
+      };
+
+    // label reset
+    case "LABEL_RESET":
+      return {
+        ...state,
+        labels: [],
+      };
+
+    // priority filter
+    case "PRIORITY_FILTER":
+      return {
+        ...state,
+        [action.filterType]: state[action.filterType].includes(action.filter)
+          ? state[action.filterType].filter((type) => type !== action.filter)
+          : [...state[action.filterType], action.filter],
+      };
+
+    // priority reset
+    case "PRIORITY_RESET":
+      return {
+        ...state,
+        priority: [],
+        timeSort: null,
       };
 
     // priority sorting

@@ -65,6 +65,21 @@
   margin-top: 1rem;
 }
 
+.reset-btn {
+  padding: 5px 0;
+  width: 80%;
+  cursor: pointer;
+  background-color: var(--default-color);
+  border: 1px solid var(--content-color);
+  color: var(--content-color);
+}
+
+.reset-btn:hover {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
 @media screen and (max-width: 850px) {
   aside {
     height: max-content;

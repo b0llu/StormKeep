@@ -6,16 +6,12 @@ const labelFilter = (notes, labels) => {
   return filteredLables;
 };
 
-const prioritySorting = (notes, sort) => {
-  if (sort === null) {
-    return notes;
-  } else if (sort === "High") {
-    return notes.filter((note) => note.priority === sort);
-  } else if (sort === "Medium") {
-    return notes.filter((note) => note.priority === sort);
-  } else if (sort === "Low") {
-    return notes.filter((note) => note.priority === sort);
-  }
+const priorityfiltering = (notes, priority) => {
+  let filteredPriorities =
+    priority.length !== 0
+      ? notes.filter((p) => priority.includes(p.priority))
+      : notes;
+  return filteredPriorities;
 };
 
 const getSortedDates = (notes, timeSort) => {
@@ -51,4 +47,4 @@ const searchBarHandler = (notes, searchTerm) => {
   });
 };
 
-export { labelFilter, prioritySorting, searchBarHandler, getSortedDates };
+export { labelFilter, priorityfiltering, searchBarHandler, getSortedDates };
