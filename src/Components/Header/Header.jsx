@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Context/Auth.context";
 import { useReducerContext } from "../../Context/Reducer.context";
 import { useThemeContext } from "../../Context/Theme.context";
-import { LoginBox } from "../../Pages/AuthPage/ProfileComponents";
 import "./Header.css";
 
 export const Header = () => {
@@ -16,9 +15,9 @@ export const Header = () => {
   return (
     <nav>
       <div className="navbar">
-          <Link className="name" to="/notes">
-            <i className="fas fa-bolt"></i> StormKeep
-          </Link>
+        <Link className="name" to="/notes">
+          <i className="fas fa-bolt"></i> StormKeep
+        </Link>
         {location.pathname !== "/" &&
           location.pathname !== "/signup" &&
           location.pathname !== "/login" && (
@@ -31,6 +30,7 @@ export const Header = () => {
               type="text"
             />
           )}
+
         <div className="margin-left-auto">
           <div className="icon-container">
             {user && <p className="icon-color">Hello, {user}</p>}
