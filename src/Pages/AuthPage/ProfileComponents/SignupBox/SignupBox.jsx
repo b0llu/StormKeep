@@ -13,7 +13,6 @@ export const SignupBox = () => {
     email: "",
     passwordOne: "",
     passwordTwo: "",
-    terms: false,
   });
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
@@ -52,12 +51,6 @@ export const SignupBox = () => {
     ) {
       setError({
         text: "Password must be same and Alphanumeric and minimum 5 letters long",
-        state: true,
-      });
-      setTrigger(!trigger);
-    } else if (!userDetails.terms) {
-      setError({
-        text: "Accept Terms and Conditions",
         state: true,
       });
       setTrigger(!trigger);
@@ -161,19 +154,6 @@ export const SignupBox = () => {
             </span>
           )}
         </div>
-        <p
-          style={{ alignItems: "center", justifyContent: "center" }}
-          className="remember-me"
-        >
-          <input
-            value={userDetails.terms}
-            onClick={() => {
-              setUserDetails({ ...userDetails, terms: !userDetails.terms });
-            }}
-            type="checkbox"
-          />{" "}
-          I accept all Terms & Conditions
-        </p>
         <button
           type="button"
           onClick={() => signupHandler()}

@@ -99,18 +99,12 @@ export const LoginBox = () => {
             </span>
           )}
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <label className="remember-me">
-            <input type="checkbox" /> Remember me
-          </label>
-          <a className="btn-forgot">Forgot your password?</a>
-        </div>
         <button
           type="button"
           onClick={() => testLogger()}
           className="btn-login btn btn-primary"
         >
-          Login with Test Credentials
+          Guest Login
         </button>
         <button
           type="button"
